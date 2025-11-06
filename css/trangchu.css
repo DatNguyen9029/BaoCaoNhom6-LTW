@@ -26,6 +26,7 @@ body {
 /* --- Header chính --- */
 header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
@@ -33,14 +34,33 @@ header {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.logo h2 {
+  margin-top: 5px;
+  color: #e4002b;
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .logo img {
   height: 60px;
+  border-radius: 0.5rem;
 }
+
 
 .search-bar {
   display: flex;
   flex: 1;
-  margin: 0 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 20px 0 40px;
 }
 
 .search-bar select,
@@ -48,10 +68,18 @@ header {
   padding: 10px;
   border: 1px solid #ccc;
   border-right: none;
+  font-size: 14px;
 }
 
 .search-bar select {
   border-radius: 4px 0 0 4px;
+  max-width: auto;
+}
+
+.search-bar input {
+  flex: 1;
+  border-radius: 0;
+  width: 300px;
 }
 
 .search-bar button {
@@ -85,6 +113,7 @@ nav {
   background: #f3f3f3;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.1);
 }
 
 nav ul {
@@ -112,32 +141,158 @@ nav a:hover {
   color: #e4002b;
 }
 
-/* --- Banner --- */
-.banner {
-  position: relative;
-  text-align: center;
-  overflow: hidden;
+main {
+  display: grid;
+  grid-template-areas: 
+    "banner banner banner"
+    "sidebar content blank"
+    "footer footer footer";
+  gap: 20px;
+  padding: 1px 3px 30px 30px;
+  background: #fff;
 }
 
-.banner img {
+.banner-container {
+  position:  relative;
+  width: 100vw;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  grid-area: banner;
+  padding: auto;
+}
+
+.banner-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300vw;
+}
+
+.banner-slide {
+  flex-shrink: 0;
+  width: 100vw;
+}
+
+.banner-slide img {
+  height: auto;
   width: 100%;
   display: block;
+  object-fit: cover;
+  max-height: 600px;
 }
 
-.banner-text {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  color: #fff;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+.dots {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  text-align: center;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  grid-area: banner;
 }
 
-.banner-text h1 {
-  font-size: 48px;
-  font-weight: 800;
+.dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.banner-text span {
-  color: #ffe36d;
+.dot.active {
+  background-color: #333;
+}
+
+
+
+/* --- Banner --- */
+
+
+
+
+
+
+
+/* Thiết bị có chiều rộng nhỏ hơn 768px (máy tính bảng và điện thoại) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px 0;
+  }
+
+  .search-bar select,
+  .search-bar input,
+  .search-bar button {
+    width: 100%;
+    margin-bottom: 8px;
+    border-radius: 4px;
+  }
+
+  .right-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  nav li {
+    margin: 8px 0;
+  }
+
+  .banner-slide,
+  .banner-slide img {
+    width: 100vw;
+  }
+
+  .dots {
+    margin-top: 8px;
+    padding-bottom: 15px;
+  }
+
+  main {
+    grid-template-areas:
+      "banner"
+      "content"
+      "footer";
+    padding: 10px;
+    gap: 10px;
+  }
+}
+
+/* Thiết bị rất nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .logo h2 {
+    font-size: 18px;
+  }
+
+  .hotline p,
+  .cart p {
+    font-size: 12px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
 }
