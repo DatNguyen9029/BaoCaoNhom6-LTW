@@ -141,23 +141,28 @@ nav a:hover {
   color: #e4002b;
 }
 
+/* Từ đây trở lên là dùng chung cho các page */
+
+
+
+
+
+
+
+
 main {
-  display: grid;
-  grid-template-areas: 
-    "banner banner banner"
-    "content content content"
-    "footer footer footer";
-  gap: 20px;
-  padding: 1px 3px 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 20px 20px 20px;
   background: #fff;
 }
 
 .banner-container {
-  position:  relative;
+  position: relative;
   width: 100vw;
   overflow: hidden;
   border-radius: 10px;
-  grid-area: banner;  
   margin: 0;
   padding: 0;
 }
@@ -182,14 +187,16 @@ main {
 }
 
 .dots {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: end;
   text-align: center;
   margin-top: 10px;
   padding-bottom: 20px;
-  grid-area: banner;
 }
 
 .dot {
@@ -197,7 +204,7 @@ main {
   width: 14px;
   height: 14px;
   margin: 0 6px;
-  background-color: #ffffff;
+  background-color: #1414143c;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -210,14 +217,12 @@ main {
 html, body {
   overflow-x: hidden;
 }
-
+  /* Khuyến mãi sốc */
 .promotion {
   padding: 40px 20px;
-  grid-area: content;
   background-color: #fff;
   max-width: 1200px;
   margin: 0 auto;
-  border: #e4002b 2px solid;
 }
 
 .promotion h2 {
@@ -227,8 +232,8 @@ html, body {
   text-align: center;
   display: flex;
   justify-content: center;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e4002b;
+  padding-bottom: 18px;
+  position: relative;
 }
 
 .promotion h2 i {
@@ -280,6 +285,263 @@ html, body {
   color: #e4002b;
   font-weight: bold;
 }
+
+/* --- Giới thiệu --- */
+.intro {
+  padding: 40px 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: floatIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.intro__title {
+  font-size: 25px;
+  color: #e4002b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro__text {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* --- Best Seller --- */
+.best-seller {
+  padding: 40px 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: floatIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.best-seller__title {
+  font-size: 25px;
+  color: #e4002b;
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 18px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.best-seller__title i {
+  margin-right: 10px;
+}
+
+/* Gạch chân cố định chiều rộng cho tiêu đề section */
+:root {
+  --section-title-underline-width: 300px;
+}
+
+.promotion h2::after,
+.best-seller__title::after,
+.news__title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0; /* đặt ở dưới cùng, nằm trong padding-bottom */
+  width: var(--section-title-underline-width);
+  height: 2px;
+  background: #e4002b;
+}
+
+/* Responsive: giảm chiều dài underline trên màn hình nhỏ */
+@media (max-width: 768px) {
+  :root { --section-title-underline-width: 180px; }
+}
+
+@media (max-width: 480px) {
+  :root { --section-title-underline-width: 140px; }
+}
+
+.best-seller__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 20px;
+}
+
+.best-seller__item {
+  width: 250px;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.best-seller__item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.best-seller__item img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.best-seller__name {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+.best-seller__code {
+  font-size: 13px;
+  color: #777;
+}
+
+.best-seller__price {
+  font-size: 16px;
+  color: #e4002b;
+  font-weight: bold;
+}
+
+.news {
+  padding: 40px 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: floatIn 1s ease-out forwards;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news__title {
+  font-size: 25px;
+  color: #e4002b;
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 18px;
+  position: relative;
+}
+
+.news__title i {
+  margin-right: 10px;
+}
+
+.news__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 20px;
+}
+
+.news__item {
+  width: 350px;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.news__item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.news__item img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Footer --- */
+.footer {
+  background: #f3f3f3;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer__text {
+  font-size: 14px;
+  color: #555;
+}
+
+/* --- Hiệu ứng float-in --- */
+@keyframes floatIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Kích hoạt hiệu ứng khi scroll */
+section {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  animation: floatIn 1s ease-out forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
