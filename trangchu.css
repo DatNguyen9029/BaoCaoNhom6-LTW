@@ -63,32 +63,27 @@ header {
   margin: 0 20px 0 40px;
 }
 
-.header_search-bar select,
 .header_search-bar input {
-  padding: 10px;
+  background-color: #ffffffc9;
+  padding: 10px 0 10px 10px;
   border: 1px solid #ccc;
   border-right: none;
-  font-size: 14px;
-}
-
-.header_search-bar select {
-  border-radius: 4px 0 0 4px;
-  max-width: auto;
-}
-
-.header_search-bar input {
+  font-size: 16px;
   flex: 1;
   border-radius: 0;
-  width: 300px;
+  height: 30px;
+  width: 500px;
 }
 
 .header_search-bar button {
   background: #e4002b;
   border: none;
   color: #fff;
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
+  height: 100%;
+  width: 80px;
 }
 
 .header_right-actions {
@@ -101,10 +96,15 @@ header {
   align-items: center;
   gap: 10px;
   color: #e4002b;
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.right-actions_hotline i, .cart i {
+.header_right-actions a {
+  text-decoration: none;
+  color: #e4002b;
+}
+
+.right-actions_hotline i, .right-actions_cart i {
   font-size: 22px;
 }
 
@@ -154,7 +154,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 20px 0px;
   background: #fff;
 }
 
@@ -223,6 +223,9 @@ html, body {
   background-color: #fff;
   max-width: 1200px;
   margin: 0 auto;
+  animation: floatIn 1s ease-out forwards;
+  opacity: 0;
+  box-shadow: 5px 0px 10px 5px rgba(13, 13, 13, 0.052) inset;
 }
 
 .promotion h2 {
@@ -289,25 +292,27 @@ html, body {
 /* --- Giới thiệu --- */
 .intro {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: #f1c0c0d3;
   max-width: 1200px;
   margin: 0 auto;
   animation: floatIn 1s ease-out forwards;
   opacity: 0;
+  box-shadow: 5px 0px 10px 5px rgba(13, 13, 13, 0.052) inset;
 }
 
 .intro__title {
-  font-size: 25px;
+  font-size: 30px;
   color: #e4002b;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .intro__text {
-  font-size: 16px;
-  color: #333;
+  font-size: 18px;
+  color: #2d2d2d;
   text-align: center;
   line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* --- Best Seller --- */
@@ -491,38 +496,81 @@ html, body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* --- Footer --- */
-.footer {
+.footer_container {
   background: #f3f3f3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 20px;
+  grid-template-columns: 1.5fr 1fr 1.5fr;
+  gap: 10px;
+  padding: 20px 50px 20px 50px;
   text-align: center;
-  border-top: 1px solid #ddd;
+  border-top: 5px solid #c43535;
 }
 
-.footer__text {
+.footer_item {
+  font-size: 13px;
+  color: #777;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.footer_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer_logo h2 {
+  margin-top: 5px;
+  color: #e4002b;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.footer_logo img {
+  height: 60px;
+  border-radius: 0.5rem;
+}
+
+.footer_item span {
+  padding: 2px 0;
+}
+
+.footer_item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.footer_item--links a {
+  font-size: 13px;
+  color: #777;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.footer_phone-number {
+  font-size: 17px;
+  color: #e4002b;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.footer_social-icons {
+  font-size: 30px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer_text {
   font-size: 14px;
   color: #555;
 }
