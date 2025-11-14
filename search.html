@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kết quả tìm kiếm</title>
+  <link rel="stylesheet" href="trangchu.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .search-results { 
+        max-width: 980px; 
+        margin: 30px auto; 
+        padding: 20px; 
+    }
+    .search-results h2 { 
+        color: #e4002b; 
+        margin-bottom: 12px; 
+    }
+    .search-results .note { 
+        color: #555; 
+    }
+  </style>
+</head>
+<body>
+  <header style="padding:12px 20px; border-bottom:1px solid #eee;">
+    <a href="trangchu.html" style="text-decoration:none;color:#e4002b;font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
+  </header>
+
+  <main class="search-results">
+    <h2>Kết quả tìm kiếm</h2>
+    <p class="note">Từ khóa: <strong id="kw"></strong></p>
+  </main>
+
+  <script>
+    // Lấy param q từ URL và hiển thị; tải file data/products.json và lọc client-side
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name) || '';
+    }
+
+    async function loadAndRenderResults(q){
+      const main = document.querySelector('.search-results');
+      const resultsContainerId = 'results-list';
+      let resultsEl = document.getElementById(resultsContainerId);
+      if(!resultsEl){
+        resultsEl = document.createElement('div');
+        resultsEl.id = resultsContainerId;
+        main.appendChild(resultsEl);
+      }
+      resultsEl.innerHTML = '<p>Đang tìm kiếm...</p>';
+      try{
+        const res = await fetch('data/products.json');
+        if(!res.ok) throw new Error('Không thể tải dữ liệu sản phẩm');
+        const products = await res.json();
+        const keyword = q.toLowerCase();
+        const filtered = products.filter(p => {
+          return (p.name && p.name.toLowerCase().includes(keyword)) ||
+                 (p.category && p.category.toLowerCase().includes(keyword)) ||
+                 (p.summary && p.summary.toLowerCase().includes(keyword));
+        });
+
+        if(filtered.length === 0){
+          resultsEl.innerHTML = '<p>Không tìm thấy sản phẩm nào cho từ khóa: <strong>' + escapeHtml(q) + '</strong></p>';
+          return;
+        }
+
+        resultsEl.innerHTML = '<p>Tìm thấy ' + filtered.length + ' kết quả</p>' +
+          filtered.map(p => `\n<div class="product-card" style="display:flex;gap:12px;align-items:flex-start;margin:12px 0;padding:12px;border:1px solid #eee;border-radius:8px;">\n  <img src="${p.image}" alt="${escapeHtml(p.name)}" style="width:110px;height:90px;object-fit:cover;border-radius:6px;">\n  <div>\n    <h3 style=\\"margin:0 0 6px 0;color:#333\\">${escapeHtml(p.name)}</h3>\n    <p style=\\"margin:0 0 6px 0;color:#e4002b;font-weight:700\\">${Number(p.price).toLocaleString('vi-VN')} đ</p>\n    <p style=\\"margin:0;color:#666\\">${escapeHtml(p.summary || p.category || '')}</p>\n  </div>\n</div>`).join('');
+
+      }catch(err){
+        resultsEl.innerHTML = '<p>Lỗi khi tải dữ liệu: ' + escapeHtml(err.message) + '</p>';
+      }
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>\"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+    }
+
+    const q = getParam('q');
+    document.getElementById('kw').textContent = q;
+    if(q) loadAndRenderResults(q);
+  </script>
+</body>
+</html>

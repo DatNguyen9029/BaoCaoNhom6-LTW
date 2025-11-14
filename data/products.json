@@ -1,0 +1,81 @@
+[
+  {
+    "id": "p001",
+    "name": "Vở bạn nhỏ",
+    "price": 12018,
+    "image": "images/trangchu/VoBanNho.png",
+    "category": "Vở",
+    "summary": "Vở chất lượng, dùng cho học sinh tiểu học"
+  },
+  {
+    "id": "p002",
+    "name": "Vở 4 ô ly",
+    "price": 10000,
+    "image": "images/trangchu/Vo4OLy.jpg",
+    "category": "Vở",
+    "summary": "Vở 4 ô ly, phù hợp môn toán"
+  },
+  {
+    "id": "p003",
+    "name": "Vở 5 ô ly",
+    "price": 13000,
+    "image": "images/trangchu/Vo5Oly.jpg",
+    "category": "Vở",
+    "summary": "Vở 5 ô ly, bìa dày chống gãy"
+  },
+  {
+    "id": "p004",
+    "name": "Vở 3 chú gấu 5 ô ly",
+    "price": 15000,
+    "image": "images/trangchu/Vo3ChuGau.jpg",
+    "category": "Vở",
+    "summary": "Vở có họa tiết dễ thương cho trẻ em"
+  },
+  {
+    "id": "p005",
+    "name": "Bút bi Thiên Long",
+    "price": 5000,
+    "image": "images/trangchu/ButBiThienLong.webp",
+    "category": "Bút",
+    "summary": "Bút bi mượt, viết êm, bán chạy"
+  },
+  {
+    "id": "p006",
+    "name": "Vở Campus",
+    "price": 18000,
+    "image": "images/trangchu/VoCampus.jpg",
+    "category": "Vở",
+    "summary": "Vở bìa mềm Campus, giấy trắng đẹp"
+  },
+  {
+    "id": "p007",
+    "name": "Bút chì gỗ HB",
+    "price": 3500,
+    "image": "images/trangchu/ButChiGoHB.webp",
+    "category": "Bút",
+    "summary": "Bút chì HB chuẩn, dễ gọt"
+  },
+  {
+    "id": "p008",
+    "name": "Tập giấy A4 - 500 tờ",
+    "price": 95000,
+    "image": "images/trangchu/news3.jpg",
+    "category": "Giấy",
+    "summary": "Giấy A4 chất lượng in ấn, đóng gói 500 tờ"
+  },
+
+  {
+    "id": "p009",
+    "name": "Máy tính Casio FX 580 VN X",
+    "price": 759000,
+    "image": "images/trangchu/may_tinh_casio580.jpg",
+    "category": "Máy tính",
+    "summary": "Máy tính cầm tay Casio FX 580 VN X, chức năng đa dạng"
+  }
+
+
+
+
+
+
+]
