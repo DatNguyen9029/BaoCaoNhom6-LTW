@@ -1,0 +1,85 @@
+.gioithieu-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px 40px 20px;
+}
+
+.gioithieu-hero {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background: linear-gradient(180deg,#fff 0%, #fff 70%);
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  color: #e4002b;
+  font-size: 36px;
+  margin: 0 0 8px 0;
+}
+
+.hero-content .lead {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.btn-primary {
+  display:inline-block;
+  background:#e4002b;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.hero-image img {
+  width: 320px;
+  max-width: 40vw;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+.gioithieu-mission, .gioithieu-history, .gioithieu-team {
+  margin-top: 26px;
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.gioithieu-mission h2, .gioithieu-history h2, .gioithieu-team h2 {
+  color:#e4002b;
+  margin-top:0;
+}
+
+.values-grid {
+  display:flex;
+  gap:18px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+
+.value-item {
+  flex:1;
+  min-width:200px;
+  background:#fafafa;
+  padding:12px;
+  border-radius:8px;
+  text-align:center;
+}
+
+.value-item i { font-size:28px; color:#e4002b; margin-bottom:8px; }
+
+@media (max-width: 800px) {
+  .gioithieu-hero { flex-direction:column; }
+  .hero-image img { width:100%; max-width:100%; }
+  .team-grid { justify-content:center; }
+}
