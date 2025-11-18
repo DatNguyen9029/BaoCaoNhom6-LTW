@@ -51,19 +51,19 @@ for (let x = 0; x < form_collection.length; x=x+1){
 
 submit_button.addEventListener("click",function(){
     for (let x = 0; x < form_collection.length; x=x+1){
-    let this_field = form_collection[x];
-    let title = this_field.firstElementChild;
-    let input_el = title.nextElementSibling;
-    let error_p = this_field.lastElementChild;
+        let this_field = form_collection[x];
+        let title = this_field.firstElementChild;
+        let input_el = title.nextElementSibling;
+        let error_p = this_field.lastElementChild;
 
-    //check every element.
-    let validity = validate(input_el);
-        console.log(validity[0]);
-        if (validity[0]==true){
-            bruh.firstElementChild.innerHTML = "";
-        } else {
-            error_p.innerHTML = validity[1];
+        //check every element.
+        let validity = validate(input_el);
+            console.log(validity[0]);
+            if (validity[0]==true){
+                bruh.firstElementChild.innerHTML = "";
+            } else {
+                error_p.innerHTML = validity[1];
+        }
     }
-}
 })
 
