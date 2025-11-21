@@ -1,0 +1,165 @@
+.lienhe-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px 40px 20px;
+}
+
+.lienhe-hero {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background: linear-gradient(180deg, #fff 0%, #fff 70%);
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.hero-content {
+  flex: 1;
+}
+.hero-content h1 {
+  color: #e4002b;
+  font-size: 32px;
+  margin: 0 0 8px 0;
+}
+.hero-content .lead {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+.btn-primary {
+  display: inline-block;
+  background: #e4002b;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn-secondary {
+  display: inline-block;
+  background: #f2f2f2;
+  color: #444;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-left: 8px;
+}
+.hero-image img {
+  width: 220px;
+  max-width: 40vw;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.lienhe-info {
+  margin-top: 22px;
+}
+.info-grid {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.info-item {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+.info-item i {
+  font-size: 28px;
+  color: #e4002b;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.lienhe-form {
+  margin-top: 26px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.form-wrap {
+  flex: 1;
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+.form-wrap h2 {
+  color: #e4002b;
+  margin-top: 0;
+}
+.field-row {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.field-row input[type="text"],
+.field-row input[type="email"],
+.field-row textarea {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.field-row textarea {
+  resize: vertical;
+}
+.field-row.actions {
+  justify-content: flex-start;
+  align-items: center;
+}
+.form-status {
+  margin-top: 12px;
+  color: #1d7a1d;
+  font-weight: 600;
+}
+
+.field-error {
+  color: #b00020;
+  font-size: 13px;
+  margin-top: 6px;
+  min-height: 18px;
+}
+.field-error:empty {
+  min-height: 0;
+}
+
+.field-group input.error,
+.field-group textarea.error {
+  border-color: #b00020;
+  box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.06);
+}
+
+.map-wrap {
+  width: 380px;
+  min-width: 280px;
+}
+.map-wrap h2 {
+  color: #e4002b;
+  margin-top: 0;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .lienhe-form {
+    flex-direction: column;
+  }
+  .map-wrap {
+    width: 100%;
+  }
+}
