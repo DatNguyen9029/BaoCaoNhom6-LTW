@@ -1,0 +1,589 @@
+/* Thiết lập cơ bản */
+.top-bar {
+  background: #555;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 40px;
+  font-size: 14px;
+}
+
+.top-bar a {
+  color: #ffce00;
+  text-decoration: none;
+}
+
+.user-links a {
+  margin-left: 10px;
+}
+
+/* --- Header chính --- */
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.header_logo h2 {
+  margin-top: 5px;
+  color: #e4002b;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header_logo img {
+  height: 60px;
+  border-radius: 0.5rem;
+}
+
+.header_search-bar {
+  display: flex; /* Dùng Flexbox */
+  flex: 1; /* Cho phép chiếm không gian */
+  justify-content: center;
+  align-items: stretch; /* Đảm bảo các thành phần kéo dài bằng nhau */
+  margin: 0 20px 0 40px;
+  max-width: 600px; /* Giới hạn chiều rộng tối đa */
+}
+
+.header_search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  font-size: 14px;
+}
+
+.header_search-bar select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  font-size: 14px;
+  border-radius: 4px 0 0 4px;
+  width: 160px; /* Chiều rộng cố định cho khung "Tất cả" */
+  /* Đảm bảo chiều cao bằng với input */
+  -webkit-appearance: none; /* Tắt kiểu dáng mặc định trên Webkit */
+  -moz-appearance: none; /* Tắt kiểu dáng mặc định trên Mozilla */
+  appearance: none;
+  background-color: #fff; /* Đảm bảo nền trắng */
+  cursor: pointer;
+}
+
+.header_search-bar form {
+  display: flex;
+  flex-grow: 1; /* Cho phép form chiếm hết không gian còn lại */
+}
+
+.header_search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  font-size: 14px;
+  flex: 1; /* Cho phép input chiếm hết không gian còn lại trong form */
+  border-radius: 0;
+  width: auto; /* Đặt lại width: auto để flex hoạt động */
+}
+
+.header_search-bar button {
+  background: #e4002b;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  /* Đảm bảo chiều cao bằng input */
+  display: flex;
+  align-items: center;
+}
+
+.header_right-actions {
+  display: flex;
+  gap: 25px;
+}
+
+.right-actions_hotline,
+.right-actions_cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e4002b;
+  font-size: 14px;
+}
+
+.right-actions_hotline i,
+.cart i {
+  font-size: 22px;
+}
+
+/* --- Menu --- */
+nav {
+  background: #f3f3f3;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 5px 5px 5px 3px rgba(13, 13, 13, 0.052);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  display: block;
+  padding: 15px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #e4002b;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Thanh Header (Phần DANH MỤC SẢN PHẨM và Sắp xếp) */
+.header-bar {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.section-title {
+  font-weight: bold;
+  color: #a00; /* Màu đỏ nổi bật */
+}
+
+.sort-options select {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Bố cục Chính (Sidebar + Nội dung) */
+.main-layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  padding-right: 20px;
+  flex-shrink: 0; /* Ngăn sidebar bị co lại */
+}
+
+.product-main-content {
+  flex-grow: 1;
+  padding-left: 20px;
+  border-left: 1px solid #eee;
+}
+
+/* Widgets trong Sidebar */
+.widget {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.widget-title {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #a00; /* Màu đỏ nổi bật cho tiêu đề widget */
+}
+
+.category-widget ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-widget li {
+  padding: 5px 0;
+}
+
+.price-filter-widget label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Bộ lọc màu sắc */
+.color-options {
+  display: flex;
+  gap: 5px;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.color-swatch.red {
+  background-color: red;
+}
+.color-swatch.pink {
+  background-color: #ff69b4;
+}
+.color-swatch.yellow {
+  background-color: yellow;
+}
+.color-swatch.orange {
+  background-color: orange;
+}
+.color-swatch.brown {
+  background-color: brown;
+}
+
+.product-card .image-box {
+  width: 100%;
+  height: 200px; /* Chiều cao cố định của khung chứa */
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.product-card .image-box .product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Quan trọng: Giữ tỷ lệ và căn giữa hình ảnh */
+  object-fit: contain;
+  object-position: center;
+}
+
+.ad-image {
+  width: 100%;
+  height: 200px; /* Chiều cao cố định cho placeholder */
+  background-color: #f0f0f0;
+  text-align: center;
+  line-height: 200px;
+  margin-top: 20px;
+}
+/* Placeholder cho hình ảnh trong sidebar */
+.ad-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #ccc;
+  /* Thực tế bạn sẽ dùng thẻ <img> thay cho placeholder này */
+}
+
+/* Nội dung Chính */
+.main-title {
+  color: #a00;
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.description {
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  display: flex;
+  gap: 15px;
+  font-weight: bold;
+}
+
+/* Lưới Sản Phẩm */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột như trong ảnh */
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+  transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+  border-color: #a00; /* Thay đổi viền khi hover */
+  box-shadow: 0 0 5px rgba(170, 0, 0, 0.5);
+}
+
+.image-box {
+  width: 100%;
+  height: 150px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Placeholder cho hình ảnh sản phẩm */
+}
+/* Thực tế bạn sẽ dùng thẻ <img> bên trong image-box */
+.image-box,
+.image-box {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-card .name {
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.product-card .sku {
+  color: #777;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.product-card .rating {
+  color: gold;
+  margin: 5px 0;
+}
+
+.product-card .price {
+  color: #a00;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Thanh Phân Trang */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding: 10px 0;
+}
+
+.page-number {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.page-number.active {
+  background-color: #a00;
+  color: white;
+  border-color: #a00;
+}
+
+.page-number:hover:not(.active) {
+  background-color: #eee;
+}
+
+.next-page {
+  border-left: none;
+}
+
+/* ... (Giữ nguyên các đoạn CSS cũ) ... */
+
+/* Widgets trong Sidebar */
+.widget {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.widget-title {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #a00; /* Màu đỏ nổi bật cho tiêu đề widget */
+}
+
+/* Cấu trúc mới cho Sidebar */
+.product-category-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-category-list li {
+  padding: 0; /* Loại bỏ padding ở đây, chuyển xuống thẻ a */
+  line-height: 1.5;
+}
+
+.product-category-list a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.product-category-list a:hover {
+  color: #a00;
+}
+
+/* Định dạng cho mục cấp 1 (Văn phòng phẩm, Đồ dùng học sinh) */
+.product-category-list li.has-submenu > a {
+  font-weight: bold; /* In đậm mục cấp 1 */
+  color: #555;
+  padding: 5px 0;
+}
+
+.product-category-list li.has-submenu.active > a {
+  color: #a00; /* Màu đỏ cho mục cấp 1 đang active */
+}
+
+/* Định dạng cho mục con (Bút, Sổ) - submenu */
+.product-category-list .sub-menu {
+  list-style: none;
+  padding-left: 15px; /* Thụt lề cho menu con */
+  margin: 5px 0 10px 0;
+}
+
+.product-category-list .sub-menu li {
+  padding: 2px 0;
+}
+
+.product-category-list .sub-menu a {
+  font-weight: normal; /* Không in đậm mục con */
+  font-size: 14px;
+  color: #333;
+  padding: 3px 0;
+}
+
+.product-category-list .sub-menu li.active a {
+  color: #a00; /* Màu đỏ cho mục con đang active (VD: Bút) */
+  font-weight: bold;
+}
+/* --- Footer --- */
+.footer_container {
+  background: #f3f3f3;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 10px;
+  padding: 20px 50px 20px 50px;
+  text-align: center;
+  border-top: 5px solid #c43535;
+}
+
+.footer_item {
+  font-size: 13px;
+  color: #777;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.footer_item a {
+  text-decoration: none;
+}
+
+.footer_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer_logo h2 {
+  margin-top: 5px;
+  color: #e4002b;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.footer_logo img {
+  height: 60px;
+  border-radius: 0.5rem;
+}
+
+.footer_item span {
+  padding: 2px 0;
+}
+
+.footer_item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.footer_item--links a {
+  font-size: 13px;
+  color: #777;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.footer_phone-number {
+  font-size: 17px;
+  color: #e4002b;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.footer_social-icons {
+  font-size: 30px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer_text {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Giữ nguyên các đoạn CSS cũ còn lại */
+
+/* ... */

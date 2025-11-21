@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+  <!-- Thanh chào
+  <div class="top-bar">
+    <p>Chào mừng bạn đến Website Công ty Cổ phần văn phòng phẩm N6 |
+       Email: <a href="#">dvkh@n6.com.vn</a>
+    </p>
+    <div class="user-links">
+      <a href="#">Đăng ký</a> | <a href="#">Đăng nhập</a> | <a href="#">Liên hệ</a>
+    </div>
+  </div> -->
 
   <!-- Header chính -->
   <header class="header">
@@ -43,20 +52,12 @@
   <!-- Thanh menu -->
   <nav>
     <ul>
-<<<<<<< HEAD
-      <li><a href="/sanpham/sanpham.html"><i class="fa fa-pen"></i> Sản phẩm</a></li>
-      <li><a href="/dangnhapky/dangnhap.html"><i class="fa fa-user"></i> Đăng nhập</a></li>
-      <li><a href="/dangnhapky/dangky.html"><i class="fa fa-user-plus"></i> Đăng ký</a></li>
-      <li><a href="/tintuc/tintuc.html"><i class="fa fa-newspaper"></i> Tin tức</a></li>
-      <li><a href="/lienhe/lienhe.html"><i class="fa fa-address-card"></i> Liên hệ</a></li>
-=======
       <li><a href="#"><i class="fa fa-pen"></i> Văn phòng phẩm</a></li>
       <li><a href="#"><i class="fa fa-graduation-cap"></i> Đồ dùng học sinh</a></li>
       <li><a href="/dangnhap/dangnhap.html"><i class="fa fa-user"></i> Đăng nhập</a></li>
       <li><a href="/dangpky/dangky.html"><i class="fa fa-user-plus"></i> Đăng ký</a></li>
       <li><a href="tintuc/tintuc.html"><i class="fa fa-newspaper"></i> Tin tức</a></li>
       <li><a href="lienhe/lienhe.html"><i class="fa fa-address-card"></i> Liên hệ</a></li>
->>>>>>> 619d70887d6cf634e0832222379f6b6e421e6942
     </ul>
   </nav>
 
@@ -83,7 +84,7 @@
 
     <!-- Giới thiệu -->
     <section class="intro">
-        <a href="/gioithieu/gioithieu.html">
+        <a href="gioithieu/gioithieu.html">
         <h2 class="intro__title">Giới thiệu về Nhà sách N6</h2>
         </a>
         <p class="intro__text">
@@ -128,34 +129,48 @@
     <section class="best-seller">
       <h2 class="best-seller__title"><i class="fa fa-star"></i> Best Seller</h2>
       <div class="best-seller__list">
-        <div class="best-seller__item">
-          <img src="images/trangchu/ButBiThienLong.webp" alt="Bút bi Thiên Long">
-          <h3 class="best-seller__name">Bút bi Thiên Long</h3>
-          <p class="best-seller__code">Mã SP: 1001</p>
-          <p class="best-seller__price">5.000 đ</p>
-        </div>
-        <div class="best-seller__item">
-          <img src="images/trangchu/VoCampus.jpg" alt="Vở Campus">
-          <h3 class="best-seller__name">Vở Campus</h3>
-          <p class="best-seller__code">Mã SP: 1002</p>
-          <p class="best-seller__price">18.000 đ</p>
-        </div>
-        <div class="best-seller__item">
-          <img src="images/trangchu/ButChiGoHB.webp" alt="Bút chì gỗ HB">
-          <h3 class="best-seller__name">Bút chì gỗ HB</h3>
-          <p class="best-seller__code">Mã SP: 1003</p>
-          <p class="best-seller__price">3.500 đ</p>
-        </div>
-        <div class="best-seller__item">
-          <img src="images/trangchu/may_tinh_casio580.jpg" alt="Máy tính Casio FX 580 VN X">
-          <h3 class="best-seller__name">Máy tính Casio FX 580 VN X</h3>
-          <p class="best-seller__code">Mã SP: 2003</p>
-          <p class="best-seller__price">759.000 đ</p>
-        </div>
+        <!--Insert here-->
       </div>
+      <script>
+        let category = "best_seller";
+        document.addEventListener("DOMContentLoaded",function(){
+            async function load_bestseller() {
+              const collected_ids = await fetch('data/test.json');
+              
+              const collected_products = await fetch('data/products.json');
+              if (collected_ids.ok&&collected_products.ok){
+                let bs_id = await collected_ids.json();
+                let products = await collected_products.json();
+                for (let x=0; x<bs_id[category].length; x++){
+                  let found_prod = null;
+                  console.log(bs_id[category][x]);
+                  for (let y=0; y<products.length;y++){
+                    if (products[y].id==bs_id[category][x]){
+                      found_prod=products[y];
+                    }
+                  }
+                  if (found_prod!=null){
+                    let bs_el = document.getElementsByClassName("best-seller__list");
+                    for (let y=0;y<bs_el.length;y++){
+                      bs_el[y].innerHTML=bs_el[y].innerHTML+`<div class="best-seller__item">
+                      <img src="${found_prod.image}" alt="${found_prod.name}">
+                      <h3 class="best-seller__name">${found_prod.name}</h3>
+                      <p class="best-seller__code">Mã SP: ${found_prod.id}</p>
+                      <p class="best-seller__price">${found_prod.price}</p>
+                      </div>`
+                    }
+                  }
+                }
+              } else {
+                throw new Error("Broke.");
+              }
+            }
+            load_bestseller();
+        })
+        
+      </script>
     </section>
 
-    <!-- Tin tức gần đây -->
     <section class="news">
       <h2 class="news__title"><i class="fa fa-newspaper"></i> Tin tức gần đây</h2>
   <div class="news__list">
@@ -180,12 +195,19 @@
       </div> 
     </section>
 
+
+
+
+
+
   </main>
+
+
 
  <script src="trangchu.js"></script>
 </body>
 
-<!-- footer -->
+
 <footer>
   <div class="footer_container">
     <div class="footer_item">
