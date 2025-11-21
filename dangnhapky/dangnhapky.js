@@ -16,7 +16,7 @@ function validate(obj){
            first_bool ? {} : err_msg="Hãy nhập đúng như mật khẩu!";
         } else {
             first_bool=(first_bool && obj.value.length>=PASSWORD_LENGTH);
-            first_bool ? {} : err_msg=`Mật khẩu phải ít nhất "${PASSWORD_LENGTH}" ký tự!`;
+            first_bool ? {} : err_msg=`Mật khẩu phải ít nhất ${PASSWORD_LENGTH} ký tự!`;
 
            let rpt = document.getElementById("rpt_pswd");
            if (rpt){
@@ -50,6 +50,7 @@ for (let x = 0; x < form_collection.length; x=x+1){
 }
 
 submit_button.addEventListener("click",function(){
+    let error = false;
     for (let x = 0; x < form_collection.length; x=x+1){
         let this_field = form_collection[x];
         let title = this_field.firstElementChild;
@@ -58,12 +59,15 @@ submit_button.addEventListener("click",function(){
 
         //check every element.
         let validity = validate(input_el);
-            console.log(validity[0]);
-            if (validity[0]==true){
-                bruh.firstElementChild.innerHTML = "";
-            } else {
-                error_p.innerHTML = validity[1];
+        if (validity[0]==true){
+            bruh.firstElementChild.innerHTML = "";
+        } else {
+            error = true;
+            error_p.innerHTML = validity[1];
         }
+    }
+    if (!error){
+        //Form is valid, do stuff.
     }
 })
 
