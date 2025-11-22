@@ -42,11 +42,67 @@ for (let x = 0; x < form_collection.length; x=x+1){
         let validity = validate(input_el);
         console.log(validity[0]);
         if (validity[0]==true){
-            bruh.firstElementChild.innerHTML = "";
+            error_p.innerHTML = "";
         } else {
             error_p.innerHTML = validity[1];
         }
     })
+}
+
+function process_form(){
+    let form;
+    if (document.forms["dangnhap"]){
+        try {
+            form = document.forms["dangnhap"];
+            let retrieved_info = JSON.parse(localStorage.getItem("n6acc_"+form["user_email"].value.toLowerCase()));
+            let password = retrieved_info["password"];
+
+            console.log(retrieved_info["password"]);
+            if (retrieved_info && password){
+                if (password==form["user_pswd"].value){
+                    localStorage.setItem("n6acc_current",JSON.stringify({
+                        "ten" : retrieved_info["ten"],
+                        "ho" : retrieved_info["ho"],
+                        "email" : retrieved_info["email"]
+                    }));
+                    window.location.href = "/trangchu.html";
+                } else {
+                    //sai mk
+                    alert("Sai mật khẩu.");
+                }
+            } else {
+                //Tai khoan khong ton tai
+                alert("Tài khoản chưa được đăng ký.");
+            }
+        } catch {
+            alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
+        }
+    } else if (document.forms["dangky"]){
+        try {
+            form = document.forms["dangky"];
+            let key = "n6acc_"+form["user_email"].value.toLowerCase();
+            let retrieved_info = localStorage.getItem(key);
+            if (!retrieved_info){
+                localStorage.setItem(key,JSON.stringify({
+                    "ten" : form["user_fname"].value,
+                    "ho" : form["user_lname"].value,
+                    "email" : form["user_email"].value,
+                    "password" : form["user_pswd"].value,
+                }))
+                localStorage.setItem("n6acc_current",JSON.stringify({
+                    "ten" : form["user_fname"].value,
+                    "ho" : form["user_lname"].value,
+                    "email" : form["user_email"].value,
+                }))
+                window.location.href = "/trangchu.html";
+            } else {
+                //Tai khoan da co roi
+                alert("Email đã được đăng ký.");
+            }
+        } catch { 
+            alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
+        }
+    }
 }
 
 submit_button.addEventListener("click",function(){
@@ -60,14 +116,15 @@ submit_button.addEventListener("click",function(){
         //check every element.
         let validity = validate(input_el);
         if (validity[0]==true){
-            bruh.firstElementChild.innerHTML = "";
+            error_p.innerHTML = "";
         } else {
             error = true;
             error_p.innerHTML = validity[1];
         }
     }
     if (!error){
-        //Form is valid, do stuff.
+        //Form is valid, process the form.
+        process_form();
     }
 })
 
