@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Liên hệ - Nhà sách N6</title>
+    <link href="../images/trangchu/logo.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="../trangchu.css">
+    <link rel="stylesheet" href="lienhe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<!--
+<body>
+    <div class="top-bar">
+        <p>Chào mừng bạn đến Website Công ty Cổ phần văn phòng phẩm N6 |
+            Thư điện tử: <a href="#">dvkh@n6.com.vn</a>
+        </p>
+        <div class="user-links">
+            <a href="../dangky/dangky.html">Đăng ký</a> | <a href="../dangnhap/dangnhap.html">Đăng nhập</a> | <a
+                href="../lienhe/lienhe.html">Liên hệ</a>
+        </div>
+    </div>
+-->
+
+    <!-- Header chính -->
+    <header class="header">
+        <a href="../trangchu.html">
+            <div class="header_logo">
+                <img src="../images/trangchu/logo.png" alt="Logo N6">
+                <h2>NHÀ SÁCH N6</h2>
+            </div>
+        </a>
+        <div class="header_search-bar">
+            <form action="#" method="get">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="header_right-actions">
+            <div class="right-actions_hotline">
+                <i class="fa fa-phone"></i>
+                <p>Gọi đặt hàng<br><strong>012.3456.789</strong></p>
+            </div>
+            <a href="../giohang/giohang.html">
+                <div class="right-actions_cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    <p>Giỏ hàng<br><strong>(0) sản phẩm</strong></p>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../sanpham/sanpham.html"><i class="fa fa-graduation-cap"></i> Sản phẩm</a></li>
+            <li><a href="../dangnhap/dangnhap.html"><i class="fa fa-user"></i> Đăng nhập</a></li>
+            <li><a href="../dangky/dangky.html"><i class="fa fa-user-plus"></i> Đăng ký</a></li>
+            <li><a href="../tintuc/tintuc.html"><i class="fa fa-newspaper"></i> Tin tức</a></li>
+            <li><a href="lienhe.html"><i class="fa fa-envelope"></i> Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <main class="lienhe-container" style="border: 5px dashed red;">
+        <section class="lienhe-hero" style="border: 5px solid blue;">
+            <div class="hero-content">
+                <h1>Liên hệ với chúng tôi</h1>
+                <p class="lead">Chúng tôi luôn sẵn sàng hỗ trợ bạn. Gửi câu hỏi hoặc yêu cầu, đội ngũ N6 sẽ liên hệ
+                    trong thời gian sớm nhất.</p>
+                <a class="btn-primary" href="#form-lienhe">Gửi tin nhắn</a>
+            </div>
+            <div class="hero-image">
+                <img src="../images/trangchu/logo.png" alt="N6">
+            </div>
+        </section>
+
+        <section class="lienhe-info" style="border: 5px solid purple;">
+            <div class="info-grid">
+                <div class="info-item" style="border: 5px solid ;">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <h3>Trụ sở chính</h3>
+                    <p>25 XYZ, Q. Ninh Kiều, TP Cần Thơ.</p>
+                </div>
+                <div class="info-item" style="border: 5px solid ;">
+                    <i class="fa fa-phone"></i>
+                    <h3>Điện thoại</h3>
+                    <p>012.3456.789</p>
+                </div>
+                <div class="info-item" style="border: 5px solid ;">
+                    <i class="fa fa-envelope"></i>
+                    <h3>Thư điện tử</h3>
+                    <p><a href="mailto:vppnhom6@gmail.com">vppnhom6@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lienhe-form" id="form-lienhe" style="border: 5px solid brown;">
+            <div class="form-wrap" style="border: 5px solid #91efb5;">
+                <h2>Gửi yêu cầu</h2>
+                <form id="contactForm" style="border: 5px solid #b1d92c;">
+                    <div class="field-row" style="border: 5px solid #864891;">
+                        <div class="field-group" style="border: 5px dotted #d17e91;">
+                            <input type="text" id="name" name="name" placeholder="Họ và tên" required minlength="2" pattern="^[A-Za-zÀ-ÿ\s'.-]{2,}$">
+                            <div class="field-error" id="error-name" aria-live="polite"></div>
+                        </div>
+                        <div class="field-group" style="border: 5px dotted #d17e91;">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <div class="field-error" id="error-email" aria-live="polite"></div>
+                        </div>
+                    </div>
+                    <div class="field-row" style="border: 5px solid #864891;">
+                        <div class="field-group" style="border: 5px dotted #d17e91;">
+                            <input type="text" id="subject" name="subject" placeholder="Tiêu đề" maxlength="100">
+                            <div class="field-error" id="error-subject" aria-live="polite"></div>
+                        </div>
+                    </div>
+                    <div class="field-row" style="border: 5px solid #864891;">
+                        <div class="field-group" style="border: 5px dotted #d17e91;">
+                            <textarea id="message" name="message" placeholder="Nội dung" rows="6" required minlength="10"></textarea>
+                            <div class="field-error" id="error-message" aria-live="polite"></div>
+                        </div>
+                    </div>
+                    <div class="field-row actions" style="border: 5px solid #864891;">
+                        <button type="submit" class="btn-primary">Gửi liên hệ</button>
+                    </div>
+                    <p id="formStatus" class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="map-wrap" style="border: 5px solid #91efb5;">
+                <h2>Địa chỉ chi tiết</h2>
+                <p><strong>Trụ sở chính:</strong> 25 XYZ, Q. Ninh Kiều, TP Cần Thơ.</p>
+                <p><strong>Điện thoại:</strong> 012.3456.789</p>
+                <p><strong>Email:</strong> <a href="mailto:vppnhom6@gmail.com">vppnhom6@gmail.com</a></p>
+                <p><strong>NHÀ MÁY CẦN THƠ:</strong> Số 672 ABC, Quận Ninh Kiều, Thành phố Cần Thơ.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer_container">
+            <div class="footer_item">
+                <a href="../trangchu.html">
+                    <div class="footer_logo">
+                        <img src="../images/trangchu/logo.png" alt="N6 Logo">
+                        <h2>NHÀ SÁCH N6</h2>
+                    </div>
+                </a>
+                <span>Website bán hàng trực tuyến của công ty cổ phần Văn phòng phẩm Nhóm 6</span>
+                <span>Trụ sở chính: 25 XYZ, Q. Ninh Kiều, TP Cần Thơ.</span>
+                <span>Điện thoại: 012.3456.789</span>
+                <span>Thư điện tử: vppnhom6@gmail.com</span>
+                <span>NHÀ MÁY CẦN THƠ: Số 672 ABC, Quận Ninh Kiều, Thành phố Cần Thơ.</span>
+            </div>
+            <div class="footer_item footer_item--links">
+                <h3>Chính sách bán hàng</h3>
+                <a href="../gioithieu/gioithieu.html">Giới thiệu</a>
+                <a href="#">Chính sách đổi trả</a>
+                <a href="#">Chính sách bảo hành</a>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Hướng dẫn thanh toán</a>
+                <a href="#">Hướng dẫn đặt hàng</a>
+            </div>
+            <div class="footer_item">
+                <h3>Hotline liên hệ</h3>
+                <span class="footer_phone-number"><i class="fa fa-phone"></i>012.3456.789</span>
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="footer_social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <h3>Chứng nhận</h3>
+                <img src="../images/trangchu/guarantee_img.webp" alt="Chứng nhận" width="190px" height="70px">
+            </div>
+        </div>
+    </footer>
+
+    <script src="../trangchu.js"></script>
+    <script src="lienhe.js"></script>
+</body>
+
+</html>
