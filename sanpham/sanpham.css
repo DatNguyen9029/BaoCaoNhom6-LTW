@@ -17,113 +17,9 @@
   margin-left: 10px;
 }
 
-/* --- Header chính --- */
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 40px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header_logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.header_logo h2 {
-  margin-top: 5px;
-  color: #e4002b;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.header_logo img {
-  height: 60px;
-  border-radius: 0.5rem;
-}
-
-.header_search-bar {
-  display: flex; /* Dùng Flexbox */
-  flex: 1; /* Cho phép chiếm không gian */
-  justify-content: center;
-  align-items: stretch; /* Đảm bảo các thành phần kéo dài bằng nhau */
-  margin: 0 20px 0 40px;
-  max-width: 600px; /* Giới hạn chiều rộng tối đa */
-}
-
-.header_search-bar input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-right: none;
-  font-size: 14px;
-}
-
-.header_search-bar select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-right: none;
-  font-size: 14px;
-  border-radius: 4px 0 0 4px;
-  width: 160px; /* Chiều rộng cố định cho khung "Tất cả" */
-  /* Đảm bảo chiều cao bằng với input */
-  -webkit-appearance: none; /* Tắt kiểu dáng mặc định trên Webkit */
-  -moz-appearance: none; /* Tắt kiểu dáng mặc định trên Mozilla */
-  appearance: none;
-  background-color: #fff; /* Đảm bảo nền trắng */
-  cursor: pointer;
-}
-
-.header_search-bar form {
-  display: flex;
-  flex-grow: 1; /* Cho phép form chiếm hết không gian còn lại */
-}
-
-.header_search-bar input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-right: none;
-  font-size: 14px;
-  flex: 1; /* Cho phép input chiếm hết không gian còn lại trong form */
-  border-radius: 0;
-  width: auto; /* Đặt lại width: auto để flex hoạt động */
-}
-
-.header_search-bar button {
-  background: #e4002b;
-  border: none;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  /* Đảm bảo chiều cao bằng input */
-  display: flex;
-  align-items: center;
-}
-
-.header_right-actions {
-  display: flex;
-  gap: 25px;
-}
-
-.right-actions_hotline,
-.right-actions_cart {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #e4002b;
-  font-size: 14px;
-}
-
-.right-actions_hotline i,
-.cart i {
-  font-size: 22px;
-}
+/* Header/responsive rules are centralized in `trangchu.css`.
+   Remove duplicated header definitions here to avoid conflicts.
+   If you need small page-specific overrides, add them below. */
 
 /* --- Menu --- */
 nav {
@@ -308,7 +204,7 @@ a {
   height: 100%;
   object-fit: cover;
   background-color: #ccc;
-  /* Thực tế bạn sẽ dùng thẻ <img> thay cho placeholder này */
+  /* Dùng thẻ <img> thay cho placeholder này */
 }
 
 /* Nội dung Chính */
@@ -365,7 +261,7 @@ a {
   align-items: center;
   /* Placeholder cho hình ảnh sản phẩm */
 }
-/* Thực tế bạn sẽ dùng thẻ <img> bên trong image-box */
+/* Dùng thẻ <img> bên trong image-box */
 .image-box,
 .image-box {
   max-width: 100%;
