@@ -82,17 +82,17 @@ document.addEventListener("DOMContentLoaded",function(){
         let err_msg = null;
         if (obj.type=="password"){
             if (obj.id=="rpt_pswd"){
-            first_bool=(first_bool&&obj.value==document.getElementById("pswd").value);
-            first_bool ? {} : err_msg="Hãy nhập đúng như mật khẩu!";
+                first_bool=(first_bool&&obj.value==document.getElementById("pswd").value);
+                first_bool ? {} : err_msg="Hãy nhập đúng như mật khẩu!";
             } else {
                 first_bool=(first_bool && obj.value.length>=PASSWORD_LENGTH);
                 first_bool ? {} : err_msg=`Mật khẩu phải ít nhất ${PASSWORD_LENGTH} ký tự!`;
 
-            let rpt = document.getElementById("rpt_pswd");
-            if (rpt){
-                let is_rpt_valid = validate(rpt);
-                is_rpt_valid[0]?rpt.parentElement.lastElementChild.innerHTML = "": rpt.parentElement.lastElementChild.innerHTML = "Hãy nhập đúng như mật khẩu!";
-            }
+                let rpt = document.getElementById("rpt_pswd");
+                if (rpt){
+                    let is_rpt_valid = validate(rpt);
+                    is_rpt_valid[0]?rpt.parentElement.lastElementChild.innerHTML = "": rpt.parentElement.lastElementChild.innerHTML = "Hãy nhập đúng như mật khẩu!";
+                }
             }
         } else {
             first_bool=(first_bool&&obj.value.length>0);
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded",function(){
                             "email" : retrieved_info["email"]
                         }));
                         if (confirm("Đăng nhập thành công, bạn có muốn về trang chủ?")==true){
-                        window.location.href = "../trangchu.html"; 
+                            window.location.href = "../trangchu.html";  
                         }
                     } else {
                         //sai mk
