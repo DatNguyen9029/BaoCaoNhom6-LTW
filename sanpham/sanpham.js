@@ -42,183 +42,81 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       const sortSelect = document.getElementById("sort-select");
 
-      // Lấy nội dung sản phẩm và mô tả mặc định (Bút)
-      const defaultProductCards = convertHtmlToProductNodes(
-        productGrid.innerHTML
-      );
       const defaultDescription = descriptionParagraph.innerHTML;
+      let penProductCards = [];
+      let notebookProductCards = [];
+      let studentProductCards = [];
+
+    function createProductHTML(product) {
+        const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
+        return `
+            <div class="product-card" data-id="${product.id}" data-price="${product.price}">
+                <div class="image-box">
+                    <img src="../${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/150'"/>
+                </div>
+                <p class="name">${product.name}</p>
+                <p class="price">${priceFormatted}</p>
+                
+                <div style="display: flex; gap: 5px; margin-top: 5px;">
+                    
+                    <button onclick="addToCart('${product.id}')" 
+                        style="flex: 1; padding: 8px 0; background: #fff; color: #e4002b; border: 1px solid #e4002b; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px;">
+                        <i class="fa fa-cart-plus"></i> Thêm
+                    </button>
+
+                    <button onclick="buyNow('${product.id}')" 
+                        style="flex: 1; padding: 8px 0; background: #e4002b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px;">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    async function initDataAndRender() {
+        try {
+            const response = await fetch('/data/products.json');
+            const data = await response.json();
+
+            const penData = data.filter(p => p.category === 'Bút');
+            const notebookData = data.filter(p => p.category === 'Vở' || p.category === 'Sổ');
+            const studentData = data.filter(p => p.category !== 'Bút' && p.category !== 'Vở' && p.category !== 'Sổ');
+
+            penProductCards = convertHtmlToProductNodes(penData.map(p => createProductHTML(p)).join(''));
+            notebookProductCards = convertHtmlToProductNodes(notebookData.map(p => createProductHTML(p)).join(''));
+            studentProductCards = convertHtmlToProductNodes(studentData.map(p => createProductHTML(p)).join(''));
+
+            allProducts = [...penProductCards, ...notebookProductCards, ...studentProductCards];
+            displayedProducts = [...allProducts];
+
+            if (mainTitle) mainTitle.textContent = "TẤT CẢ SẢN PHẨM";
+
+            const GENERAL_DESCRIPTION = "Chào mừng bạn đến với Nhà sách N6! Chúng tôi chuyên cung cấp các sản phẩm văn phòng phẩm, dụng cụ học tập chất lượng cao, đa dạng mẫu mã, phục vụ tốt nhất nhu cầu của học sinh, sinh viên và dân văn phòng.";
+            
+            if (descriptionParagraph) descriptionParagraph.innerHTML = GENERAL_DESCRIPTION;
+
+            const allMenuItems = document.querySelectorAll(".product-category-list li");
+            allMenuItems.forEach(li => li.classList.remove("active"));
+
+            document.querySelectorAll(".sub-menu").forEach(menu => menu.style.display = "none");
+
+            filterAndSortProducts();
+
+        } catch (error) {
+            console.error("Lỗi tải JSON:", error);
+            productGrid.innerHTML = "<p style='text-align:center; margin-top:20px; color:red'>Lỗi kết nối dữ liệu (Cần chạy Live Server).</p>";
+        }
+    }
 
       // --- DỮ LIỆU SẢN PHẨM ---
       const PEN_DESCRIPTION =
         "Trong suốt những năm qua, các sản phẩm mang thương hiệu đã và đang nhận được sự yêu mến và tin tưởng của người tiêu dùng Việt. Các sản phẩm Bút luôn không ngừng được cải tiến về công nghệ, kiểu dáng, mẫu mã và chất lượng.";
-      const PEN_PRODUCT_HTML_STRING = `
-            <div class="product-card" data-price="2190">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butgelxoaduoc.png" alt="Bút Semi Gel 0.7mm - 2800" class="product-image"/>
-                    </div>
-                    <p class="name">Bút Semi Gel 0.7mm - 2800</p>
-                    <p class="price">2.190 đ</p>
-                </div>
-            <div class="product-card" data-price="8802">
-                    <div class="image-box">
-                        <img src="../images/sanpham/gelminihongha.png" alt="Bút gel xóa được GP01 - 2751" class="product-image"/>
-                    </div>
-                    <p class="name">Bút gel xóa được GP01 - 2751</p>
-                    <p class="price">8.802 đ</p>
-                </div>
-            <div class="product-card" data-price="4410">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butgelxoaduoc.png" alt="Bút bi Hồng Hà 0.5mm - 2481" class="product-image"/>
-                    </div>
-                    <p class="name">Bút bi Hồng Hà 0.5mm - 2481</p>
-                    <p class="price">4.410 đ</p>
-                </div>
-            <div class="product-card" data-price="5291">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butmayhonghanethoa.png" alt="Bút bi GP02 - 2753" class="product-image"/>
-                    </div>
-                    <p class="name">Bút bi GP02 - 2753</p>
-                    <p class="price">5.291 đ</p>
-                </div>
-            <div class="product-card" data-price="6000">
-                    <div class="image-box">
-                        <img src="../images/sanpham/gelminihongha.png" alt="Bút bi GP04 - 2754" class="product-image"/>
-                    </div>
-                    <p class="name">Bút bi GP04 - 2754</p>
-                    <p class="price">6.000 đ</p>
-                </div>
-            <div class="product-card" data-price="2500">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butchigo.png" alt="Ruột bút gel ngòi nhỏ - 2755" class="product-image"/>
-                    </div>
-                    <p class="name">Ruột bút gel ngòi nhỏ - 2755</p>
-                    <p class="price">2.500 đ</p>
-                </div>
-            <div class="product-card" data-price="3000">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butbihongha0.5mm.png" alt="Ruột bút gel GP02 - 2756" class="product-image"/>
-                    </div>
-                    <p class="name">Ruột bút gel GP02 - 2756</p>
-                    <p class="price">3.000 đ</p>
-                </div>
-            <div class="product-card" data-price="7800">
-                    <div class="image-box">
-                        <img src="../images/sanpham/butmayhonghanethoa.png" alt="Bút Semi Gel Hồng Hà 0.7mm - 2801" class="product-image"/>
-                    </div>
-                    <p class="name">Bút Semi Gel Hồng Hà 0.7mm - 2801</p>
-                    <p class="price">7.800 đ</p>
-                </div>
-            `;
-      const penProductCards = convertHtmlToProductNodes(
-        PEN_PRODUCT_HTML_STRING
-      );
 
       const NOTEBOOK_DESCRIPTION =
         "Công ty Cổ phần Văn phòng phẩm Hồng Hà cung cấp đa dạng các sản phẩm sổ bìa da, sổ bìa số, sổ lò xo... chất lượng cao, phong cách thiết kế hiện đại, độc đáo, đáp ứng nhu cầu sử dụng của học sinh, sinh viên.";
-      const NOTEBOOK_PRODUCT_HTML_STRING = `
-        <div class="product-card" data-sku="9237" data-price="338000"><div class="image-box"><img src="../images/sanpham/so1.png" alt="Bộ sản phẩm ĐỘC LẬP (sổ tay + bút ký cao cấp) - 9237" class="product-image"/></div><p class="name">Bộ sản phẩm ĐỘC LẬP (sổ tay + bút ký cao cấp) - 9237</p><p class="price">338.000 đ</p></div>
-          <div class="product-card" data-sku="9236" data-price="299000"><div class="image-box"><img src="../images/sanpham/so2.png" alt="Bộ sản phẩm TƯƠNG LAI (9 Món) - 9236" class="product-image"/></div><p class="name">Bộ sản phẩm TƯƠNG LAI (9 Món) - 9236</p><p class="price">299.000 đ</p></div>
-          <div class="product-card" data-sku="9231" data-price="26500"><div class="image-box"><img src="../images/sanpham/so3.png" alt="Ruột sổ còng A5 6 lỗ kẻ ngang - 9231" class="product-image"/></div><p class="name">Ruột sổ còng A5 6 lỗ kẻ ngang - 9231 (Thay thế cho ...)</p><p class="price">26.500 đ</p></div>
-          <div class="product-card" data-sku="4586" data-price="33500"><div class="image-box"><img src="../images/sanpham/so4.png" alt="Sổ bìa bồi A4 200 trang Hồng Hà Subject - 4586" class="product-image"/></div><p class="name">Sổ bìa bồi A4 200 trang Hồng Hà Subject - 4586</p><p class="price">33.500 đ</p></div>
-          <div class="product-card" data-sku="4587" data-price="49100"><div class="image-box"><img src="../images/sanpham/so1.png" alt="Sổ bìa bồi A4 200 trang Hồng Hà Subject - 4587" class="product-image"/></div><p class="name">Sổ bìa bồi A4 200 trang Hồng Hà Subject - 4587</p><p class="price">49.100 đ</p></div>
-          <div class="product-card" data-sku="4588" data-price="43600"><div class="image-box"><img src="../images/sanpham/so3.png" alt="Sổ bìa bồi A4 300 trang Subject Hồng Hà - 4588" class="product-image"/></div><p class="name">Sổ bìa bồi A4 300 trang Subject Hồng Hà - 4588</p><p class="price">43.600 đ</p></div>
-          <div class="product-card" data-sku="4589" data-price="53300"><div class="image-box"><img src="../images/sanpham/so1.png" alt="Sổ bìa bồi A4 360 trang Subject Hồng Hà - 4589" class="product-image"/></div><p class="name">Sổ bìa bồi A4 360 trang Subject Hồng Hà - 4589</p><p class="price">53.300 đ</p></div>
-          <div class="product-card" data-sku="4552" data-price="61500"><div class="image-box"><img src="../images/sanpham/so2.png" alt="Sổ bìa bồi A4 420 trang Hồng Hà Patterns - 4552" class="product-image"/></div><p class="name">Sổ bìa bồi A4 420 trang Hồng Hà Patterns - 4552</p><p class="price">61.500 đ</p></div>
-          <div class="product-card" data-sku="4618" data-price="61000"><div class="image-box"><img src="../images/sanpham/so4.png" alt="Sổ bìa bồi A4 420 trang Hồng Hà Subject - 4618" class="product-image"/></div><p class="name">Sổ bìa bồi A4 420 trang Hồng Hà Subject - 4618</p><p class="price">61.000 đ</p></div>
-          <div class="product-card" data-sku="4551" data-price="48000"><div class="image-box"><img src="../images/sanpham/so3.png" alt="Sổ bìa bồi caro A4 300 trang Hồng Hà Subject - 4551" class="product-image"/></div><p class="name">Sổ bìa bồi caro A4 300 trang Hồng Hà Subject - 4551</p><p class="price">48.000 đ</p></div>
-          <div class="product-card" data-sku="4530" data-price="33500"><div class="image-box"><img src="../images/sanpham/so1.png" alt="Sổ bìa bồi kẻ ngang A4 200 trang Hồng Hà Patterns - 4530" class="product-image"/></div><p class="name">Sổ bìa bồi kẻ ngang A4 200 trang Hồng Hà Patterns - 4530</p><p class="price">33.500 đ</p></div>
-          <div class="product-card" data-sku="4531" data-price="48100"><div class="image-box"><img src="../images/sanpham/so4.png" alt="Sổ bìa bồi kẻ ngang A4 280 trang Hồng Hà Patterns - 4531" class="product-image"/></div><p class="name">Sổ bìa bồi kẻ ngang A4 280 trang Hồng Hà Patterns - 4531</p><p class="price">48.100 đ</p></div>
-        `;
-      const notebookProductCards = convertHtmlToProductNodes(
-        NOTEBOOK_PRODUCT_HTML_STRING
-      );
 
       const STUDENT_DESCRIPTION =
         "Công ty Cổ phần Văn phòng phẩm Hồng Hà cung cấp các sản phẩm Dụng cụ học tập phục vụ tận tình cho nhu cầu học tập đa dạng của các bạn học sinh, sinh viên.";
-      const STUDENT_PRODUCT_HTML_STRING = `
-        <div class="product-card" data-sku="5903" data-price="15702">
-            <div class="image-box">
-            <img src="../images/sanpham/giay.png" alt="Giấy kiểm tra ô ly chống lóa đặc biệt - 5903" class="product-image"/>
-          </div>
-          <p class="name">Giấy kiểm tra ô ly chống lóa đặc biệt - 5903</p>
-          <p class="price">15.702 đ</p>
-        </div>
-        <div class="product-card" data-sku="3237" data-price="359345">
-            <div class="image-box">
-            <img src="../images/sanpham/den.png" alt="Đèn bàn bảo vệ thị lực HH-04 HỒNG HÀ - 3237" class="product-image"/>
-          </div>
-          <p class="name">Đèn bàn bảo vệ thị lực HH-04 HỒNG HÀ - 3237</p>
-          <p class="price">359.345 đ</p>
-        </div>
-        <div class="product-card" data-sku="3062" data-price="29500">
-            <div class="image-box">
-            <img src="../images/sanpham/boc.png" alt="Bọc decal vở, sách (280x380mm) (10 chiếc/tập)" class="product-image"/>
-          </div>
-          <p class="name">Bọc decal vở, sách (280x380mm) (10 chiếc/tập)</p>
-          <p class="price">29.500 đ</p>
-        </div>
-        <div class="product-card" data-sku="3460" data-price="8925">
-            <div class="image-box">
-            <img src="../images/sanpham/giay.png" alt="Giấy thủ công Hồng Hà 12 màu (10x20cm) - 3460" class="product-image"/>
-          </div>
-          <p class="name">Giấy thủ công Hồng Hà 12 màu (10x20cm) - 3460</p>
-          <p class="price">8.925 đ</p>
-        </div>
-        <div class="product-card" data-sku="3474" data-price="12000">
-            <div class="image-box">
-            <img src="../images/sanpham/bang.png" alt="Bảng học sinh tiểu học Hồng Hà - 3474" class="product-image"/>
-          </div>
-          <p class="name">Bảng học sinh tiểu học Hồng Hà - 3474</p>
-          <p class="price">12.000 đ</p>
-        </div>
-        <div class="product-card" data-sku="3437" data-price="7200">
-            <div class="image-box">
-            <img src="../images/sanpham/muc.png" alt="Mực lọ Hồng Hà 60 cc - 3437" class="product-image"/>
-          </div>
-          <p class="name">Mực lọ Hồng Hà 60 cc - 3437</p>
-          <p class="price">7.200 đ</p>
-        </div>
-        <div class="product-card" data-sku="3436" data-price="14502">
-            <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Bộ Đồ dùng 4 sản phẩm - 3436" class="product-image"/>
-          </div>
-          <p class="name">Bộ Đồ dùng 4 sản phẩm - 3436</p>
-          <p class="price">14.502 đ</p>
-        </div>
-        <div class="product-card" data-sku="3478" data-price="9402">
-            <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Bộ đồ dùng 4 sản phẩm - 3478" class="product-image"/>
-          </div>
-          <p class="name">Bộ đồ dùng 4 sản phẩm - 3478</p><p class="price">9.402 đ</p>
-        </div>
-        <div class="product-card" data-sku="3483" data-price="53100">
-          <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Compa bộ SM02 - 3483" class="product-image"/>
-          </div>
-          <p class="name">Compa bộ SM02 - 3483</p><p class="price">53.100 đ</p>
-        </div>
-        <div class="product-card" data-sku="3490" data-price="22200">
-          <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Compa kép SM 04 - 3490" class="product-image"/>
-          </div>
-          <p class="name">Compa kép SM 04 - 3490</p><p class="price">22.200 đ</p>
-        </div>
-        <div class="product-card" data-sku="3489" data-price="22200">
-          <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Compa chì gố SM 03 - 3489" class="product-image"/>
-          </div>
-          <p class="name">Compa chì gố SM 03 - 3489</p><p class="price">22.200 đ</p>
-        </div>
-        <div class="product-card" data-sku="3215" data-price="11400">
-          <div class="image-box">
-            <img src="../images/sanpham/eke.png" alt="Compa Hồng Hà C9-H - 3215" class="product-image"/>
-          </div>
-          <p class="name">Compa Hồng Hà C9-H - 3215</p><p class="price">11.400 đ</p>
-        </div>
-        `;
-      const studentProductCards = convertHtmlToProductNodes(
-        STUDENT_PRODUCT_HTML_STRING
-      );
 
       // TRẠNG THÁI MẶC ĐỊNH SẼ LÀ BÚT (cần đặt lại nếu bạn muốn ĐDHS là mặc định)
       allProducts = penProductCards;
@@ -498,5 +396,37 @@ document.addEventListener("DOMContentLoaded", function () {
       // Nếu bạn muốn mặc định là Đồ dùng học sinh khi load trang:
       // document.querySelector('#student-tools-li .main-cat-link').click();
 
-      filterAndSortProducts();
+      initDataAndRender();
+      const cart = JSON.parse(localStorage.getItem('n6_cart')) || [];
+      const cartCountElement = document.querySelector('.right-actions_cart strong');
+      if(cartCountElement) {
+          cartCountElement.innerText = `(${cart.length}) sản phẩm`;
+      }
     });
+
+
+window.addToCart = function(productId) {
+    let cart = JSON.parse(localStorage.getItem('n6_cart')) || [];
+    
+    let existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id: productId, quantity: 1 });
+    }
+    
+    localStorage.setItem('n6_cart', JSON.stringify(cart));
+    
+    
+    const cartCountElement = document.querySelector('.right-actions_cart strong');
+    if(cartCountElement) {
+        cartCountElement.innerText = `(${cart.length}) sản phẩm`;
+    }
+};
+
+window.buyNow = function(productId) {
+    addToCart(productId);
+    
+    window.location.href = '../giohang/giohang.html';
+};

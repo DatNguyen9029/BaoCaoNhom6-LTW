@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -22,7 +26,7 @@ body {
 }
 
 .giohang__header {
-  margin: 0 auto 12px;
+  /* margin: 0 auto 5px; */
   width: 100%;
 }
 
@@ -295,7 +299,6 @@ body {
   background-color: #c0392b;
   box-shadow: 0 4px 10px rgba(228, 0, 43, 0.3);
 }
-
 
 @media (max-width: 768px) {
   .giohang {
