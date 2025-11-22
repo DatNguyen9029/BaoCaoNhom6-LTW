@@ -20,8 +20,8 @@ function validate(obj){
 
            let rpt = document.getElementById("rpt_pswd");
            if (rpt){
-            let stuff = validate(rpt);
-            stuff[0]?rpt.parentElement.lastElementChild.innerHTML = "": rpt.parentElement.lastElementChild.innerHTML = "Hãy nhập đúng như mật khẩu!";
+            let is_rpt_valid = validate(rpt);
+            is_rpt_valid[0]?rpt.parentElement.lastElementChild.innerHTML = "": rpt.parentElement.lastElementChild.innerHTML = "Hãy nhập đúng như mật khẩu!";
            }
         }
     } else {
@@ -93,6 +93,8 @@ function process_form(){
                     "email" : form["user_email"].value,
                     "password" : form["user_pswd"].value,
                 }));
+
+                //Tự động đăng nhập.
                 localStorage.setItem("n6acc_current",JSON.stringify({
                     "ten" : form["user_fname"].value,
                     "ho" : form["user_lname"].value,
