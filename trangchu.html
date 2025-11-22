@@ -86,29 +86,45 @@
     <section class="promotion">
       <h2><i class="fa fa-bullhorn"></i> Khuyến mãi sốc</h2>
       <div class="promotion-flex">
-        <div class="promotion-item">
+        <div class="promotion-item" data-id="p001">
           <img src="images/trangchu/VoBanNho.png" alt="Vở Bạn nhỏ">
           <h3>Vở bạn nhỏ</h3>
           <p class="code">Mã SP: 0001</p>
           <p class="price">12.018 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p001')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p001')">Mua ngay</button>
+          </div>
         </div>
-        <div class="promotion-item">
+        <div class="promotion-item" data-id="p002">
           <img src="images/trangchu/Vo4OLy.jpg" alt="Vở 4 ô ly">
           <h3>Vở 4 ô ly</h3>
           <p class="code">Mã SP: 0002</p>
           <p class="price">10.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p002')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p002')">Mua ngay</button>
+          </div>
         </div>
-        <div class="promotion-item">
+        <div class="promotion-item" data-id="p003">
           <img src="images/trangchu/Vo5Oly.jpg" alt="Vở 5 ô ly">
           <h3>Vở 5 ô ly</h3>
           <p class="code">Mã SP: 0003</p>
           <p class="price">13.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p003')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p003')">Mua ngay</button>
+          </div>
         </div>
-        <div class="promotion-item">
+        <div class="promotion-item" data-id="p004">
           <img src="images/trangchu/Vo3ChuGau.jpg" alt="Vở 3 chú gấu">
           <h3>Vở 3 chú gấu 5 ô ly</h3>
           <p class="code">Mã SP: 0004</p>
           <p class="price">15.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p004')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p004')">Mua ngay</button>
+          </div>
         </div>
       </div>
     </section>
@@ -119,29 +135,45 @@
     <section class="best-seller">
       <h2 class="best-seller__title"><i class="fa fa-star"></i> Best Seller</h2>
       <div class="best-seller__list">
-        <div class="best-seller__item">
+        <div class="best-seller__item" data-id="p005">
           <img src="images/trangchu/ButBiThienLong.webp" alt="Bút bi Thiên Long">
           <h3 class="best-seller__name">Bút bi Thiên Long</h3>
           <p class="best-seller__code">Mã SP: 1001</p>
           <p class="best-seller__price">5.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p005')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p005')">Mua ngay</button>
+          </div>
         </div>
-        <div class="best-seller__item">
+        <div class="best-seller__item" data-id="p006">
           <img src="images/trangchu/VoCampus.jpg" alt="Vở Campus">
           <h3 class="best-seller__name">Vở Campus</h3>
           <p class="best-seller__code">Mã SP: 1002</p>
           <p class="best-seller__price">18.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p006')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p006')">Mua ngay</button>
+          </div>
         </div>
-        <div class="best-seller__item">
+        <div class="best-seller__item" data-id="p007">
           <img src="images/trangchu/ButChiGoHB.webp" alt="Bút chì gỗ HB">
           <h3 class="best-seller__name">Bút chì gỗ HB</h3>
           <p class="best-seller__code">Mã SP: 1003</p>
           <p class="best-seller__price">3.500 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p007')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p007')">Mua ngay</button>
+          </div>
         </div>
-        <div class="best-seller__item">
+        <div class="best-seller__item" data-id="p009">
           <img src="images/trangchu/may_tinh_casio580.jpg" alt="Máy tính Casio FX 580 VN X">
           <h3 class="best-seller__name">Máy tính Casio FX 580 VN X</h3>
           <p class="best-seller__code">Mã SP: 2003</p>
           <p class="best-seller__price">759.000 đ</p>
+          <div class="product-actions">
+            <button class="btn add" onclick="addToCart('p009')"><i class="fa fa-cart-plus"></i> Thêm</button>
+            <button class="btn buy" onclick="buyNow('p009')">Mua ngay</button>
+          </div>
         </div>
       </div>
     </section>
@@ -149,7 +181,7 @@
     <!-- Tin tức gần đây -->
     <section class="news">
       <h2 class="news__title"><i class="fa fa-newspaper"></i> Tin tức gần đây</h2>
-  <div class="news__list">
+      <div class="news__list">
         <div class="news__item">
           <img src="images/trangchu/news1.jpg" alt="Tin tức 1">
           <span class="news_item_timepost"><i class="fa fa-calendar"> Sat, 01/02/2025 </i></span>
@@ -210,7 +242,8 @@
         <img src="images/trangchu/guarantee_img.webp" alt="Chứng nhận" width="190px" height="70px">
     </div>
   </footer>
-  <script src="trangchu.js"></script>
+  <script src="trangchu.js" defer></script>
+  
 </body>
 
 <!-- footer -->

@@ -50,6 +50,20 @@ function loadCartFromStorage() {
     } else {
         cart = [];
     }
+    // Migrate legacy homepage IDs (e.g. 0001,1001,2003) to product IDs in products.json
+    const legacyMap = {
+        '0001': 'p001', '0002': 'p002', '0003': 'p003', '0004': 'p004',
+        '1001': 'p005', '1002': 'p006', '1003': 'p007', '2003': 'p009'
+    };
+    let migrated = false;
+    cart.forEach(item => {
+        if (legacyMap[item.id]) {
+            item.id = legacyMap[item.id];
+            migrated = true;
+        }
+    });
+    if (migrated) saveCartToStorage();
+
     renderCart();
 }
 
