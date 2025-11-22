@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
     const form_collection = document.getElementsByClassName("container1");
-    const form_collection2 = document.getElementsByClassName("required_field");
-    const submit_button = document.getElementById("mainbutton");
 
     let PASSWORD_LENGTH=8;
 
