@@ -70,12 +70,87 @@
     "price": 759000,
     "image": "images/trangchu/may_tinh_casio580.jpg",
     "category": "Máy tính",
-    "summary": "Máy tính cầm tay Casio FX 580 VN X, chức năng đa dạng"
+    "summary": "Máy tính cầm tay Casio FX 580 VN X"
+  },
+
+  {
+    "id": "p010",
+    "name": "Bút bi Hồng Hà 0.5mm",
+    "price": 4500,
+    "image": "images/sanpham/butbihongha0.5mm.png",
+    "category": "Bút",
+    "summary": "Bút bi mực đều, nét thanh mảnh"
+  },
+  {
+    "id": "p011",
+    "name": "Bút Gel xóa được",
+    "price": 12000,
+    "image": "images/sanpham/butgelxoaduoc.png",
+    "category": "Bút",
+    "summary": "Bút gel tiện lợi, có thể tẩy xóa sạch sẽ"
+  },
+  {
+    "id": "p012",
+    "name": "Bút máy Nét Hoa",
+    "price": 48000,
+    "image": "images/sanpham/butmayhonghanethoa.png",
+    "category": "Bút",
+    "summary": "Bút máy luyện chữ đẹp, ngòi mài nét thanh đậm"
+  },
+  {
+    "id": "p013",
+    "name": "Bút Gel Mini Hồng Hà",
+    "price": 6000,
+    "image": "images/sanpham/gelminihongha.png",
+    "category": "Bút",
+    "summary": "Thiết kế nhỏ gọn, mực ra đều màu"
+  },
+  {
+    "id": "p014",
+    "name": "Bảng học sinh 2 mặt",
+    "price": 25000,
+    "image": "images/sanpham/bang.png",
+    "category": "Dụng cụ học tập",
+    "summary": "Bảng đen và trắng, chống lóa mắt"
+  },
+  {
+    "id": "p015",
+    "name": "Tập bọc vở nilon (10 tờ)",
+    "price": 15000,
+    "image": "images/sanpham/boc.png",
+    "category": "Dụng cụ học tập",
+    "summary": "Bọc vở trong suốt, bảo vệ bìa sách vở"
+  },
+  {
+    "id": "p016",
+    "name": "Đèn học chống cận",
+    "price": 185000,
+    "image": "images/sanpham/den.png",
+    "category": "Dụng cụ học tập",
+    "summary": "Ánh sáng vàng bảo vệ mắt, thiết kế nhỏ gọn"
+  },
+  {
+    "id": "p017",
+    "name": "Bộ thước kẻ Eke",
+    "price": 12000,
+    "image": "images/sanpham/eke.png",
+    "category": "Dụng cụ học tập",
+    "summary": "Bộ thước nhựa dẻo, vạch chia rõ nét"
+  },
+  {
+    "id": "p018",
+    "name": "Giấy kiểm tra cấp 1",
+    "price": 10000,
+    "image": "images/sanpham/giay.png",
+    "category": "Giấy",
+    "summary": "Giấy định lượng cao, không lem mực"
+  },
+  {
+    "id": "p019",
+    "name": "Mực bút máy (Tím)",
+    "price": 8000,
+    "image": "images/sanpham/muc.png",
+    "category": "Dụng cụ học tập",
+    "summary": "Mực tím học sinh, màu tươi sáng"
   }
-
-
-
-
-
-
 ]
