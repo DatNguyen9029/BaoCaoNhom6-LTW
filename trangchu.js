@@ -1,3 +1,4 @@
+// --- Hiệu ứng slide của banner ---
 const slides = document.getElementById('slides');
 const dots = document.querySelectorAll('.dot');
 
@@ -10,22 +11,15 @@ function showSlide(index) {
   }
 }
 
-
+// -- Hiệu ứng float của trang chủ --
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("section");
+  const sections = document.querySelectorAll('main > section');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  sections.forEach(section => {
-    observer.observe(section);
+  sections.forEach((s, i) => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(12px)';
+    s.style.transition = 'opacity 420ms ease, transform 420ms ease';
+    setTimeout(() => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; }, 120 + i * 90);
   });
 });
 
