@@ -65,7 +65,7 @@ function process_form(){
                         "ho" : retrieved_info["ho"],
                         "email" : retrieved_info["email"]
                     }));
-                    window.location.href = "/trangchu.html";
+                    window.location.href = ".../trangchu.html";
                 } else {
                     //sai mk
                     alert("Sai mật khẩu.");
@@ -94,7 +94,7 @@ function process_form(){
                     "ho" : form["user_lname"].value,
                     "email" : form["user_email"].value,
                 }))
-                window.location.href = "/trangchu.html";
+                window.location.href = ".../trangchu.html";
             } else {
                 //Tai khoan da co roi
                 alert("Email đã được đăng ký.");
