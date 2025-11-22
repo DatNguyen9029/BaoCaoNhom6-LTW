@@ -614,24 +614,6 @@ section.visible {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Thiết bị có chiều rộng nhỏ hơn 768px (máy tính bảng và điện thoại) */
 @media (max-width: 768px) {
   header {
@@ -731,4 +713,72 @@ section.visible {
     text-align: center;
 
   }
+}
+
+/* Responsive Header - applied site-wide */
+@media (max-width: 992px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+    gap: 12px;
+  }
+
+  .header_logo {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .header_logo img {
+    height: 48px;
+  }
+
+  .header_logo h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .header_search-bar {
+    order: 2;
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  .header_search-bar form {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .header_search-bar input {
+    width: 100%;
+    max-width: none;
+    height: 40px;
+  }
+
+  .header_search-bar button {
+    width: 56px;
+    padding: 8px;
+  }
+
+  .header_right-actions {
+    order: 3;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .right-actions_hotline { display: none; }
+}
+
+@media (max-width: 480px) {
+  header { padding: 10px 12px; }
+  .header_search-bar input { height: 42px; font-size: 14px; }
+  .header_logo img { height: 42px; }
+  .header_right-actions { justify-content: space-between; width: 100%; }
+  .header_logo h2 { font-size: 16px; }
+  .header_search-bar button { width: 44px; }
 }
