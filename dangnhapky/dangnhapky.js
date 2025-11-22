@@ -55,17 +55,17 @@ function process_form(){
         try {
             form = document.forms["dangnhap"];
             let retrieved_info = JSON.parse(localStorage.getItem("n6acc_"+form["user_email"].value.toLowerCase()));
-            let password = retrieved_info["password"];
-
-            console.log(retrieved_info["password"]);
-            if (retrieved_info && password){
+            if (retrieved_info){
+                let password = retrieved_info["password"];
                 if (password==form["user_pswd"].value){
                     localStorage.setItem("n6acc_current",JSON.stringify({
                         "ten" : retrieved_info["ten"],
                         "ho" : retrieved_info["ho"],
                         "email" : retrieved_info["email"]
                     }));
-                    window.location.href = ".../trangchu.html";
+                    if (confirm("Đăng nhập thành công, bạn có muốn về trang chủ?")==true){
+                       window.location.href = "../trangchu.html"; 
+                    }
                 } else {
                     //sai mk
                     alert("Sai mật khẩu.");
@@ -74,8 +74,9 @@ function process_form(){
                 //Tai khoan khong ton tai
                 alert("Tài khoản chưa được đăng ký.");
             }
-        } catch {
+        } catch(error) {
             alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
+            console.log(error);
         }
     } else if (document.forms["dangky"]){
         try {
@@ -88,43 +89,59 @@ function process_form(){
                     "ho" : form["user_lname"].value,
                     "email" : form["user_email"].value,
                     "password" : form["user_pswd"].value,
-                }))
+                }));
                 localStorage.setItem("n6acc_current",JSON.stringify({
                     "ten" : form["user_fname"].value,
                     "ho" : form["user_lname"].value,
                     "email" : form["user_email"].value,
-                }))
-                window.location.href = ".../trangchu.html";
+                }));
+                if (confirm("Đăng ký thành công, bạn có muốn về trang chủ?")==true){
+                    window.location.href = "../trangchu.html";
+                }
             } else {
                 //Tai khoan da co roi
                 alert("Email đã được đăng ký.");
             }
-        } catch { 
+        } catch(error) { 
             alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
+            console.log(error);
         }
     }
 }
 
-submit_button.addEventListener("click",function(){
-    let error = false;
-    for (let x = 0; x < form_collection.length; x=x+1){
-        let this_field = form_collection[x];
-        let title = this_field.firstElementChild;
-        let input_el = title.nextElementSibling;
-        let error_p = this_field.lastElementChild;
-
-        //check every element.
-        let validity = validate(input_el);
-        if (validity[0]==true){
-            error_p.innerHTML = "";
-        } else {
-            error = true;
-            error_p.innerHTML = validity[1];
+for (let x=0;x<document.forms.length;x++){
+    let form = document.forms[x];
+    if (form.name!="dangky"&&form.name!="dangnhap"){
+        continue;
+    }
+    console.log(form);
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        let error = false;
+        let containers = form.getElementsByClassName("container1");
+        for (let x=0;x<containers.length;x++){
+            let this_field = containers[x];
+            let title = this_field.firstElementChild;
+            let input_el = title.nextElementSibling;
+            let error_p = this_field.lastElementChild;
+            console.log(this_field);
+            let validity = validate(input_el);
+            if (validity[0]==true){
+                error_p.innerHTML = "";
+            } else {
+                error_p.innerHTML = validity[1];
+                error=true;
+            }
         }
-    }
-    if (!error){
-        //Form is valid, process the form.
-        process_form();
-    }
-})
+        
+        
+        if (!error){
+            //Form is valid, process the form.
+            process_form();
+            return true;
+        } else {
+            return false;
+        }
+    })
+};
 
