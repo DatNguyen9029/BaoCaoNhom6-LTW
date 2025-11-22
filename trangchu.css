@@ -292,6 +292,26 @@ html, body {
   font-weight: bold;
 }
 
+/* Buttons for product actions on homepage */
+.product-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}
+.product-actions .btn {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+}
+.product-actions .btn.add { border-color: #e4002b; color: #e4002b; }
+.product-actions .btn.buy { background: #e4002b; color: #fff; border: none; }
+
 /* --- Giới thiệu --- */
 .intro {
   padding: 40px 20px;

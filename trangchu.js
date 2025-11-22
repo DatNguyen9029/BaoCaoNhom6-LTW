@@ -38,9 +38,52 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Chuyển hướng tới trang kết quả tìm kiếm với query làm param
+    // Chuyển hướng tới trang kết quả tìm kiếm với query làm param (tuyệt đối tới root)
     const encoded = encodeURIComponent(query);
-    window.location.href = `search.html?q=${encoded}`;
+    try {
+      // Su dung origin de tranh loi khi trang duoc mo tu file://
+      window.location.href = `${location.origin}/search.html?q=${encoded}`;
+    } catch (err) {
+      // Fallback cho file://
+      window.location.href = `../search.html?q=${encoded}`;
+    }
   });
 });
+
+// --- Cac chuc nang gio hang dc nhung ---
+(function(){
+  function getCart() {
+    return JSON.parse(localStorage.getItem('n6_cart')) || [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('n6_cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  window.addToCart = function(productId) {
+    const cart = getCart();
+    const existing = cart.find(i => i.id === productId);
+    if (existing) existing.quantity += 1;
+    else cart.push({ id: productId, quantity: 1 });
+    saveCart(cart);
+  };
+
+  window.buyNow = function(productId) {
+    addToCart(productId);
+    try {
+      window.location.href = location.origin + '/giohang/giohang.html';
+    } catch (err) {
+      window.location.href = '/giohang/giohang.html';
+    }
+  };
+
+  function updateCartCount() {
+    const cart = getCart();
+    const el = document.querySelector('.right-actions_cart strong');
+    if (el) el.innerText = `(${cart.length}) sản phẩm`;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+})();
 
