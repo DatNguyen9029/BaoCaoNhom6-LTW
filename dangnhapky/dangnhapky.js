@@ -72,7 +72,10 @@ function process_form(){
                 }
             } else {
                 //Tai khoan khong ton tai
-                alert("Tài khoản chưa được đăng ký.");
+                let status = confirm("Email chưa được đăng ký, bạn có muốn đến trang đăng ký?");
+                if (status){
+                    window.location.href = "../dangky/dangky.html";
+                }
             }
         } catch(error) {
             alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
@@ -100,7 +103,10 @@ function process_form(){
                 }
             } else {
                 //Tai khoan da co roi
-                alert("Email đã được đăng ký.");
+                let status = confirm("Email đã được đăng ký, bạn có muốn đến trang đăng nhập?");
+                if (status){
+                    window.location.href = "../dangnhap/dangnhap.html";
+                }
             }
         } catch(error) { 
             alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
