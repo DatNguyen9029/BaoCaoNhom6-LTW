@@ -4,19 +4,19 @@ document.addEventListener("DOMContentLoaded",function(){
     if (!searchForm) return;
 
     searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = searchForm.querySelector('input[type="text"]');
-    const query = input ? input.value.trim() : '';
-    if (!query) {
-        alert('Vui lòng nhập từ khóa tìm kiếm.');
-        if (input) input.focus();
-        return;
-    }
-    
+        e.preventDefault();
+        const input = searchForm.querySelector('input[type="text"]');
+        const query = input ? input.value.trim() : '';
+        if (!query) {
+            alert('Vui lòng nhập từ khóa tìm kiếm.');
+            if (input) input.focus();
+            return;
+        }
+        
 
-    // Chuyển hướng tới trang kết quả tìm kiếm với query làm param
-    const encoded = encodeURIComponent(query);
-    window.location.href = `/search.html?q=${encoded}`;
+        // Chuyển hướng tới trang kết quả tìm kiếm với query làm param
+        const encoded = encodeURIComponent(query);
+        window.location.href = `/search.html?q=${encoded}`;
     });
     //-------\\
 
@@ -54,22 +54,6 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         }
         return [first_bool, err_msg];
-    }
-
-    for (let x = 0; x < form_collection.length; x=x+1){
-        let this_field = form_collection[x];
-        let title = this_field.firstElementChild;
-        let input_el = title.nextElementSibling;
-        let error_p = this_field.lastElementChild;
-        input_el.addEventListener("input",function(){
-            let validity = validate(input_el);
-            console.log(validity[0]);
-            if (validity[0]==true){
-                error_p.innerHTML = "";
-            } else {
-                error_p.innerHTML = validity[1];
-            }
-        })
     }
 
     function process_form(){
@@ -138,6 +122,22 @@ document.addEventListener("DOMContentLoaded",function(){
                 console.log(error);
             }
         }
+    }
+
+    for (let x = 0; x < form_collection.length; x=x+1){
+        let this_field = form_collection[x];
+        let title = this_field.firstElementChild;
+        let input_el = title.nextElementSibling;
+        let error_p = this_field.lastElementChild;
+        input_el.addEventListener("input",function(){
+            let validity = validate(input_el);
+            console.log(validity[0]);
+            if (validity[0]==true){
+                error_p.innerHTML = "";
+            } else {
+                error_p.innerHTML = validity[1];
+            }
+        })
     }
 
     for (let x=0;x<document.forms.length;x++){
