@@ -300,50 +300,7 @@ body {
   box-shadow: 0 4px 10px rgba(228, 0, 43, 0.3);
 }
 
-/* wireframe  */
-body {
-  margin: 5px;
-  border: 5px dashed blue;
-}
 
-header {
-  border: 5px dashed yellowgreen;
-}
-
-nav {
-  margin-top: 1px;
-  border: 5px dashed yellowgreen;
-}
-
-main {
-  margin-top: 1px;
-  border: 5px dashed yellowgreen;
-}
-
-.giohang {
-  margin-top: 1px;
-  border: 5px dashed blueviolet;
-}
-
-.giohang__header {
-  margin-top: 1px;
-  border: 5px dashed darkred;
-}
-
-.giohang__body{
-  margin-top: 2px;
-  border: 5px dashed darkred;
-}
-
-.giohang__footer {
-  margin-top: 1px;
-  border: 5px dashed darkred;
-}
-
-footer {
-  margin-top: 1px;
-  border: 5px dashed yellowgreen;
-}
 
 @media (max-width: 768px) {
   .giohang {
