@@ -27,6 +27,55 @@ document.addEventListener("DOMContentLoaded",function(){
 
     let PASSWORD_LENGTH=8;
 
+    function them_tai_khoan(ten,ho,email,password){
+        let key = "n6acc_"+email.toLowerCase();
+        try {
+            localStorage.setItem(key,JSON.stringify({
+                "ten" : ten,
+                "ho" : ho,
+                "email" : email,
+                "password" : password,
+            }));
+        } catch(e) {
+            alert("Đã xảy ra lỗi khi tạo tài khoản!");
+        }
+    }
+
+    //Thêm một số tài khoản có sẵn để test.
+    const DEFAULT_ACCOUNTS = [
+        {
+            ten: "Tài khoản",
+            ho: "Test",
+            email: "test123@abc.com",
+            password: "test1234", 
+        },
+        {
+            ten: "Nguyễn Văn",
+            ho: "A",
+            email: "nguyenvana@gmail.com",
+            password: "12345678",
+        },
+        {
+            ten: "Nguyen Thi",
+            ho: "B",
+            email: "nguyenthib@gmail.com",
+            password: "abcdefgh",
+        },
+    ]
+    DEFAULT_ACCOUNTS.forEach(account => {
+        let key = "n6acc_"+account.email.toLowerCase();
+        if (!localStorage.getItem(key)){
+
+            let pswd_length = account.password.length;
+            if (pswd_length<PASSWORD_LENGTH){
+                return;
+            }
+
+            them_tai_khoan(account.ten,account.ho,account.email,account.password);
+        }
+    });
+    
+
     function validate(obj){
         if (!obj.checkValidity){
             return null;
@@ -94,21 +143,18 @@ document.addEventListener("DOMContentLoaded",function(){
                 let key = "n6acc_"+form["user_email"].value.toLowerCase();
                 let retrieved_info = localStorage.getItem(key);
                 if (!retrieved_info){
-                    localStorage.setItem(key,JSON.stringify({
-                        "ten" : form["user_fname"].value,
-                        "ho" : form["user_lname"].value,
-                        "email" : form["user_email"].value,
-                        "password" : form["user_pswd"].value,
-                    }));
+                    let register_status = them_tai_khoan(form["user_fname"].value,form["user_lname"].value,form["user_email"].value,form["user_pswd"].value);
 
                     //Tự động đăng nhập.
-                    localStorage.setItem("n6acc_current",JSON.stringify({
-                        "ten" : form["user_fname"].value,
-                        "ho" : form["user_lname"].value,
-                        "email" : form["user_email"].value,
-                    }));
-                    if (confirm("Đăng ký thành công, bạn có muốn về trang chủ?")==true){
-                        window.location.href = "../trangchu.html";
+                    if (register_status){
+                        localStorage.setItem("n6acc_current",JSON.stringify({
+                            "ten" : form["user_fname"].value,
+                            "ho" : form["user_lname"].value,
+                            "email" : form["user_email"].value,
+                        }));
+                        if (confirm("Đăng ký thành công, bạn có muốn về trang chủ?")==true){
+                            window.location.href = "../trangchu.html";
+                        }
                     }
                 } else {
                     //Tai khoan da co roi
