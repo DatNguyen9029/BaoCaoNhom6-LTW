@@ -34,8 +34,10 @@ document.addEventListener("DOMContentLoaded",function(){
                 "email" : email,
                 "password" : password,
             }));
+            return true;
         } catch(e) {
             alert("Đã xảy ra lỗi khi tạo tài khoản!");
+            return false;
         }
     }
 
@@ -103,11 +105,11 @@ document.addEventListener("DOMContentLoaded",function(){
         return [first_bool, err_msg];
     }
 
-    function process_form(){
-        let form;
-        if (document.forms["dangnhap"]){
+    function process_form(form){
+        //let form;
+        if (form.name=="dangnhap"){
             try {
-                form = document.forms["dangnhap"];
+                //form = document.forms["dangnhap"];
                 let retrieved_info = JSON.parse(localStorage.getItem("n6acc_"+form["user_email"].value.toLowerCase()));
                 if (retrieved_info){
                     let password = retrieved_info["password"];
@@ -132,12 +134,11 @@ document.addEventListener("DOMContentLoaded",function(){
                     }
                 }
             } catch(error) {
-                alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
-                console.log(error);
+                alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!\n"+error);
             }
-        } else if (document.forms["dangky"]){
+        } else if (form.name=="dangky"){
             try {
-                form = document.forms["dangky"];
+                //form = document.forms["dangky"];
                 let key = "n6acc_"+form["user_email"].value.toLowerCase();
                 let retrieved_info = localStorage.getItem(key);
                 if (!retrieved_info){
@@ -162,8 +163,7 @@ document.addEventListener("DOMContentLoaded",function(){
                     }
                 }
             } catch(error) { 
-                alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!");
-                console.log(error);
+                alert("Đã xảy ra lỗi trong khi xử lý yêu cầu đăng nhập!\n"+error);
             }
         }
     }
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded",function(){
         let error_p = this_field.lastElementChild;
         input_el.addEventListener("input",function(){
             let validity = validate(input_el);
-            console.log(validity[0]);
+            //console.log(validity[0]);
             if (validity[0]==true){
                 error_p.innerHTML = "";
             } else {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 let title = this_field.firstElementChild;
                 let input_el = title.nextElementSibling;
                 let error_p = this_field.lastElementChild;
-                console.log(this_field);
+                //console.log(this_field);
                 let validity = validate(input_el);
                 if (validity[0]==true){
                     error_p.innerHTML = "";
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded",function(){
             
             if (!error){
                 //Form is valid, process the form.
-                process_form();
+                process_form(form);
                 return true;
             } else {
                 return false;

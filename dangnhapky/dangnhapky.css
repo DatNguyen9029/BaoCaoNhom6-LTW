@@ -1,206 +1,209 @@
 #header {
-        font-size: 15px;
-        color:rgb(70,70,70);
-      }
+  font-size: 15px;
+  color:rgb(70,70,70);
+}
 
-      main {
-        display: block;
-      }
-      .main_div {
-        display: grid;
-        grid-template-areas:
-        "empty2 dangnhap empty3";
-        grid-template-columns: 20% 60% 20%
-      }
-      .lines { 
-        grid-area:lines
-      }
+main {
+  display: block;
+}
+.main_div {
+  display: grid;
+  grid-template-areas:
+  "empty2 dangnhap empty3";
+  grid-template-columns: 20% 60% 20%
+}
+.lines { 
+  grid-area:lines
+}
 
-      .empty0 {grid-area: empty0} 
-      .empty {grid-area: empty} 
-      .empty2 {grid-area: empty2}
-      .empty3 {grid-area: empty3}
-      .emptyx {grid-area: emptyx}
-      
-      .dangnhap {
-        grid-template-areas: dangnhap
-      }
+/*-- Gán area --*/
+.empty0 {grid-area: empty0} 
+.empty {grid-area: empty} 
+.empty2 {grid-area: empty2}
+.empty3 {grid-area: empty3}
+.emptyx {grid-area: emptyx}
 
-      .path {
-        display:grid;
-        grid-template-areas: 
-        "empty pathto";
-        grid-template-columns: 20% 80%;
-      }
-      .pathtext {
-        color:rgb(150,150,150);
-        font-size: 15px;
-        grid-area: pathto;
-      }
+.dangnhap {
+  grid-template-areas: dangnhap
+}
 
-      .khoiphuc {
-        visibility: hidden;
-      }
+/* Thanh địa chỉ */
+.path {
+  display:grid;
+  grid-template-areas: 
+  "empty pathto";
+  grid-template-columns: 20% 80%;
+}
+.pathtext {
+  color:rgb(150,150,150);
+  font-size: 15px;
+  grid-area: pathto;
+}
+/*---*/
 
-      .container2 {
-        display: grid;
-        grid-template-areas: 
-        "empty kh empty2"
-        "empty note empty2"
-        "empty form empty2"
-      }
-      .kh {
-        grid-area:kh;
-        font-weight:normal;
-        font-size:20px;
-      }
-      .note {
-        grid-area:note;
-        margin:0px 0px 30px 0px;
-        
-        color:rgb(100,100,100);
+.khoiphuc {
+  visibility: hidden;
+}
 
-        font-weight:bold;
-        font-size:12px;
-      }
-      .form {
-        grid-area:form
-
-      }
-
-      .labelf {
-        display: inline;
-        color:rgb(100,100,100);
-
-        margin: 0px 0px 5px 0px;
-
-        font-weight: bolder;
-        font-size: 15px;
-      }
-      .required_field {
-        display: inline;
-        color: red;
-        font-weight:bolder;
-        font-size: 15px;
-      }
-
-      .inputf {
-        display: block;
-        box-sizing: border-box;
-        width:100%;
-        height:45px;
+.container2 {
+  display: grid;
+  grid-template-areas: 
+  "empty kh empty2"
+  "empty note empty2"
+  "empty form empty2"
+}
+.kh {
+  grid-area:kh;
+  font-weight:normal;
+  font-size:20px;
+}
+.note {
+  grid-area:note;
+  margin:0px 0px 30px 0px;
   
-        margin: auto;
-        padding: 10px 10px 10px 10px;
+  color:rgb(100,100,100);
 
-        border-style:groove;
-        border-width:1px;
-        border-color:rgb(230,230,230);
-      }
+  font-weight:bold;
+  font-size:12px;
+}
+.form {
+  grid-area:form
 
-      .error_field {
-        margin: 0px 0px 10px 0px;
-        color: red;
-        font-size: 12px;
-      }
+}
 
-      .submit_button {
-        color: white;
-        background-color:rgb(230, 0, 0);
-        width: 25%;
-        height: 40px;
-        margin: 0px 10px 0px 0px;
-        border-width:0px;
-      }
-      .submit_button:hover {
-        background-color:rgb(200,0,0);
-      }
+.labelf {
+  display: inline;
+  color:rgb(100,100,100);
 
-      .forgot_psw {
-        color: rgb(120,120,120);
-        font-size: 12px;
-        text-decoration: none;
-      }
+  margin: 0px 0px 5px 0px;
 
-      /* --- Footer --- */
-      .footer_container {
-        background: #f3f3f3;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 10px;
-        padding: 20px 50px 20px 50px;
-        text-align: center;
-        border-top: 5px solid #c43535;
-      }
+  font-weight: bolder;
+  font-size: 15px;
+}
+.required_field {
+  display: inline;
+  color: red;
+  font-weight:bolder;
+  font-size: 15px;
+}
 
-      .footer_item {
-        font-size: 13px;
-        color: #777;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        text-align: left;
-      }
+.inputf {
+  display: block;
+  box-sizing: border-box;
+  width:100%;
+  height:45px;
 
-      .footer_item a {
-        text-decoration: none;
-      }
+  margin: auto;
+  padding: 10px 10px 10px 10px;
 
-      .footer_logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-top: 10px;
-      }
+  border-style:groove;
+  border-width:1px;
+  border-color:rgb(230,230,230);
+}
 
-      .footer_logo h2 {
-        margin-top: 5px;
-        color: #e4002b;
-        font-size: 22px;
-        font-weight: bold;
-      }
+.error_field {
+  margin: 0px 0px 10px 0px;
+  color: red;
+  font-size: 12px;
+}
 
-      .footer_logo img {
-        height: 60px;
-        border-radius: 0.5rem;
-      }
+.submit_button {
+  color: white;
+  background-color:rgb(230, 0, 0);
+  width: 25%;
+  height: 40px;
+  margin: 0px 10px 0px 0px;
+  border-width:0px;
+}
+.submit_button:hover {
+  background-color:rgb(200,0,0);
+}
 
-      .footer_item span {
-        padding: 2px 0;
-      }
+.forgot_psw {
+  color: rgb(120,120,120);
+  font-size: 12px;
+  text-decoration: none;
+}
 
-      .footer_item h3 {
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 15px;
-      }
+/* --- Footer --- */
+.footer_container {
+  background: #f3f3f3;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 10px;
+  padding: 20px 50px 20px 50px;
+  text-align: center;
+  border-top: 5px solid #c43535;
+}
 
-      .footer_item--links a {
-        font-size: 13px;
-        color: #777;
-        text-decoration: none;
-        cursor: pointer;
-        padding-bottom: 10px;
-      }
+.footer_item {
+  font-size: 13px;
+  color: #777;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
 
-      .footer_phone-number {
-        font-size: 17px;
-        color: #e4002b;
-        font-weight: bold;
-        margin-top: 5px;
-      }
+.footer_item a {
+  text-decoration: none;
+}
 
-      .footer_social-icons {
-        font-size: 30px;
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-      }
+.footer_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
 
-      .footer_text {
-        font-size: 14px;
-        color: #555;
-      }
+.footer_logo h2 {
+  margin-top: 5px;
+  color: #e4002b;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.footer_logo img {
+  height: 60px;
+  border-radius: 0.5rem;
+}
+
+.footer_item span {
+  padding: 2px 0;
+}
+
+.footer_item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.footer_item--links a {
+  font-size: 13px;
+  color: #777;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.footer_phone-number {
+  font-size: 17px;
+  color: #e4002b;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.footer_social-icons {
+  font-size: 30px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer_text {
+  font-size: 14px;
+  color: #555;
+}
