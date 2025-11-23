@@ -613,9 +613,76 @@ section.visible {
 }
 
 
+/* Hamburger mặc định ẩn trên desktop */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #e4002b;
+}
 
+/* ≥ 992px: Desktop lớn */
+@media (min-width: 992px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header_logo h2 { font-size: 22px; }
+  .header_logo img { height: 60px; }
 
-/* Thiết bị có chiều rộng nhỏ hơn 768px (máy tính bảng và điện thoại) */
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+  }
+  nav li { margin: 0 15px; }
+}
+
+/* ≤ 991px: Tablet và mobile */
+@media (max-width: 991px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+  .header_logo {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .header_logo img { height: 48px; }
+  .header_logo h2 { font-size: 18px; }
+
+  .header_search-bar {
+    width: 100%;
+    order: 2;
+  }
+  .header_right-actions {
+    order: 3;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .right-actions_hotline { display: none; }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+  nav li {
+    margin: 8px 0;
+    width: 100%;
+  }
+  nav a {
+    width: 100%;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+}
+
+/* ≤ 768px: Tablet nhỏ */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -623,16 +690,11 @@ section.visible {
     padding: 10px 20px;
   }
 
-  .logo {
-    margin-bottom: 10px;
-  }
-
   .search-bar {
     flex-direction: column;
     align-items: stretch;
     margin: 10px 0;
   }
-
   .search-bar select,
   .search-bar input,
   .search-bar button {
@@ -647,25 +709,11 @@ section.visible {
     width: 100%;
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-  }
-
-  nav li {
-    margin: 8px 0;
-  }
-
   .banner-slide,
   .banner-slide img {
     width: 100vw;
   }
-
-  .dots {
-    margin-top: 8px;
-    padding-bottom: 15px;
-  }
+  .dots { margin-top: 8px; padding-bottom: 15px; }
 
   main {
     grid-template-areas:
@@ -676,110 +724,83 @@ section.visible {
     gap: 10px;
   }
 
-  .promotion-item {
-    width: 45%;
-  }
+  .promotion-item { width: 45%; }
 
   .footer_container {
     grid-template-columns: 1fr 1fr;
     padding: 20px;
   }
 
-
-}
-
-/* Thiết bị rất nhỏ (dưới 480px) */
-@media (max-width: 480px) {
-  .logo h2 {
-    font-size: 18px;
-  }
-
-  .hotline p,
-  .cart p {
-    font-size: 12px;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 4px;
-  }
-
-  .promotion-item {
-    width: 100%;
-  }
-
-  .footer_container {
-    grid-template-columns: 1fr;
-    text-align: center;
-
-  }
-}
-
-/* Responsive Header - applied site-wide */
-@media (max-width: 992px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-    gap: 12px;
-  }
-
-  .header_logo {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    margin-top: 0;
-  }
-
-  .header_logo img {
-    height: 48px;
-  }
-
-  .header_logo h2 {
-    font-size: 18px;
-    margin: 0;
-  }
-
   .header_search-bar {
-    order: 2;
     width: 100%;
     margin: 0;
     justify-content: flex-start;
   }
 
   .header_search-bar form {
-    width: 100%;
     display: flex;
-    gap: 8px;
+    width: 100%;
   }
 
   .header_search-bar input {
-    width: 100%;
-    max-width: none;
+    flex: 1;              /* input chiếm toàn bộ chiều ngang */
+    min-width: 0;         /* tránh tràn */
     height: 40px;
+    font-size: 14px;
+    border-radius: 4px 0 0 4px;
   }
 
   .header_search-bar button {
-    width: 56px;
-    padding: 8px;
+    width: 56px;          /* cố định chiều rộng nút */
+    padding: 0;
+    border-radius: 0 4px 4px 0;
   }
-
-  .header_right-actions {
-    order: 3;
-    width: 100%;
-    justify-content: flex-end;
-    gap: 12px;
-  }
-
-  .right-actions_hotline { display: none; }
 }
 
+
+/* ≤ 480px: Mobile */
 @media (max-width: 480px) {
+  /* Hamburger menu */
+  .menu-toggle { display: block; }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #f3f3f3;
+  }
+  nav ul.active { display: flex; }
+  nav a { padding: 12px; }
+
+  /* Header */
   header { padding: 10px 12px; }
-  .header_search-bar input { height: 42px; font-size: 14px; }
   .header_logo img { height: 42px; }
-  .header_right-actions { justify-content: space-between; width: 100%; }
   .header_logo h2 { font-size: 16px; }
+  .header_search-bar input { height: 42px; font-size: 14px; }
   .header_search-bar button { width: 44px; }
+  .header_right-actions { justify-content: space-between; width: 100%; }
+
+  /* Text nhỏ hơn */
+  .logo h2 { font-size: 18px; }
+  .hotline p, .cart p { font-size: 12px; }
+
+  /* Dot nhỏ */
+  .dot { width: 10px; height: 10px; margin: 0 4px; }
+
+  /* Promotion full width */
+  .promotion-item { width: 100%; }
+
+  /* Footer 1 cột */
+  .footer_container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .header_search-bar input {
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .header_search-bar button {
+    width: 44px;
+    font-size: 14px;
+  }
 }

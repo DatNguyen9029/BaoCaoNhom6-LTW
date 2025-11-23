@@ -87,3 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', updateCartCount);
 })();
 
+function toggleMenu() {
+  document.querySelector("nav ul").classList.toggle("active");
+}
