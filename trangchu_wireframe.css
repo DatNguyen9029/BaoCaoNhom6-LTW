@@ -4,6 +4,7 @@ body {
   background: #fff;
 }
 
+
 /* --- Header chính --- */
 header {
   display: flex;
@@ -127,7 +128,6 @@ nav a:hover {
 }
 
 /* Từ đây trở lên là dùng chung cho các page */
-
 
 
 
@@ -505,7 +505,6 @@ html, body {
 
 
 
-
 /* --- Footer --- */
 .footer_container {
   background: #f3f3f3;
@@ -782,4 +781,189 @@ section.visible {
   .header_right-actions { justify-content: space-between; width: 100%; }
   .header_logo h2 { font-size: 16px; }
   .header_search-bar button { width: 44px; }
+}
+
+/* Wireframe overlay: colored borders and labels for major components */
+
+/* Utility to keep wireframe visuals distinct and non-invasive */
+.wireframe * { box-shadow: none !important; }
+
+/* GC1: header */
+header.wire, .wireframe header {
+  outline: 3px dashed #3498db;
+  position: relative;
+}
+header.wire::before, .wireframe header::before {
+  content: "GC1 - header";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #3498db;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GC2: nav */
+nav.wire, .wireframe nav {
+  outline: 3px dashed #f1c40f;
+  position: relative;
+}
+nav.wire::before, .wireframe nav::before {
+  content: "GC2 - nav";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #f1c40f;
+  color: #111;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GC3: main */
+.main.wire, .wireframe .main {
+  outline: 3px dashed #34495e;
+  position: relative;
+}
+.main.wire::before, .wireframe .main::before {
+  content: "GC3 - main";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #34495e;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GI1: intro */
+.intro.wire, .wireframe .intro {
+  outline: 3px dashed #5500ff; /* tím */
+  position: relative;
+}
+.intro.wire::before, .wireframe .intro::before {
+  content: "GI1 - intro";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #5500ff;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GI2: banner */
+.banner-container.wire, .wireframe .banner-container {
+  outline: 3px dashed #9b59b6;
+  position: relative;
+}
+.banner-container.wire::before, .wireframe .banner-container::before {
+  content: "GI2 - banner";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #9b59b6;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GI3: promotion */
+.promotion.wire, .wireframe .promotion {
+  outline: 3px dashed #1abc9c;
+  position: relative;
+}
+.promotion.wire::before, .wireframe .promotion::before {
+  content: "GI3 - promotion";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #1abc9c;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GI4: best-seller */
+.best-seller.wire, .wireframe .best-seller {
+  outline: 3px dashed #e67e22;
+  position: relative;
+}
+.best-seller.wire::before, .wireframe .best-seller::before {
+  content: "GI4 - best-seller";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #e67e22;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GI5: news */
+.news.wire, .wireframe .news {
+  outline: 3px dashed #2ecc71;
+  position: relative;
+}
+.news.wire::before, .wireframe .news::before {
+  content: "GI5 - news";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #2ecc71;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+
+
+/* PRODUCTS grid */
+.product-grid.wire, .wireframe .product-grid {
+  outline: 3px dashed #16a085;
+  position: relative;
+}
+.product-grid.wire::before, .wireframe .product-grid::before {
+  content: "PRODUCTS";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #16a085;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* FOOTER */
+.footer_container.wire, .wireframe .footer_container {
+  outline: 3px dashed #c0392b;
+  position: relative;
+}
+.footer_container.wire::before, .wireframe .footer_container::before {
+  content: "FOOTER";
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Helper: enable wireframe mode by adding class `wireframe` on <body> or to the root element */
+/* Example: <body class="wireframe"> will show colored outlines and labels */
+
+/* Ensure labels don't interfere with layout on small screens */
+@media (max-width: 480px) {
+  .wireframe *::before { display: none; }
 }
